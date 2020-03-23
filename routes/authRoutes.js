@@ -2,9 +2,7 @@ const passport = require('passport')
 
 
 module.exports = (app) => {
-    app.get('/api/logout', (req,res) => {
-       res.send({})
-    })
+
 
     app.get('/auth/google',
         passport.authenticate('google', { scope: ['openid', 'email'] }),
@@ -20,5 +18,8 @@ module.exports = (app) => {
     })
     app.get('/api/current_user', (req, res) => {
         res.send(req.user)
-c    })
+    })
+    app.get('/', (req, res) => {
+        res.send('WELCOME')
+    })
 }

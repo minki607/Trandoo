@@ -1,0 +1,243 @@
+nav {
+    font-family: 'Quicksand', sans-serif;
+}
+.nav-wrapper {
+    background-color: white;
+}
+
+nav .brand-logo {
+    color: #cca8a8;
+
+}
+
+#nav-mobile {
+    background-color: #ccc2c7 !important;
+}
+
+nav .btn {
+    margin-left: 15px;
+}
+
+nav a {
+    margin-right: 5px;
+}
+
+#charge {
+    background-color: #cca8a8;
+    border-radius: 10px;
+}
+
+
+/*Landing  */
+
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC:100,300,400,500,700,900&display=swap');
+section {
+    padding: 80px 0;
+}
+img {
+    max-width: 100%;
+}
+* {
+    font-size: 16px;
+    font-family: 'Noto Sans TC', sans-serif;
+}
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+.uppercase__font {
+    text-transform: uppercase;
+}
+.capitalize__font {
+    text-transform: capitalize;
+}
+.justify {
+    text-align: justify;
+}
+.underline {
+    text-decoration: underline;
+}
+h1 {
+    font-size: 70px;
+}
+h2 {
+    font-size: 50px;
+}
+@media screen and (max-width: 768px) {
+    h2 {
+        font-size: 35px;
+    }
+}
+h3 {
+    font-size: 40px;
+}
+@media screen and (max-width: 768px) {
+    h3 {
+        font-size: 25px;
+    }
+}
+h4 {
+    font-size: 30px;
+}
+@media screen and (max-width: 768px) {
+    h4 {
+        font-size: 20px;
+    }
+}
+h5 {
+    font-size: 24px;
+}
+@media screen and (max-width: 768px) {
+    h5 {
+        font-size: 18px;
+    }
+}
+h6 {
+    font-size: 18px;
+}
+@media screen and (max-width: 768px) {
+    h6 {
+        font-size: 14px;
+    }
+}
+h1, h2, h3, h4, h5 {
+    font-weight: 900;
+}
+.fw-1 {
+    font-weight: 100 !important;
+}
+.fw-2 {
+    font-weight: 200 !important;
+}
+.fw-3 {
+    font-weight: 300 !important;
+}
+.fw-4 {
+    font-weight: 400 !important;
+}
+.fw-5 {
+    font-weight: 500 !important;
+}
+.fw-6 {
+    font-weight: 600 !important;
+}
+.fw-7 {
+    font-weight: 700 !important;
+}
+.fw-8 {
+    font-weight: 800 !important;
+}
+.fw-9 {
+    font-weight: 900 !important;
+}
+.lh-1 {
+    line-height: 1rem !important;
+}
+.lh-2 {
+    line-height: 2rem !important;
+}
+.lh-3 {
+    line-height: 3rem !important;
+}
+.lh-4 {
+    line-height: 4rem !important;
+}
+.lh-5 {
+    line-height: 5rem !important;
+}
+.lh-6 {
+    line-height: 6rem !important;
+}
+.lh-7 {
+    line-height: 7rem !important;
+}
+.lh-8 {
+    line-height: 8rem !important;
+}
+.lh-9 {
+    line-height: 9rem !important;
+}
+.normal {
+    font-weight: normal !important;
+}
+.no__outline {
+    outline-style: none !important;
+}
+.pointer {
+    cursor: pointer;
+}
+.ul__list--inline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.ul__list--inline > li {
+    display: inline-block;
+}
+.ul__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sosmed__list li a {
+    width: 40px;
+    height: 40px;
+    transition: 0.5s;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    font-size: 20px;
+    color: black;
+}
+.sosmed__list li a:hover {
+    color: white;
+    background-color: black;
+    box-shadow: 0px 10px 40px #3e3c3c 7a;
+}
+.sosmed__list li a i {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.slider__image {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    right: 0;
+}
+.slider__image.slick-slider {
+    position: absolute !important;
+    width: 100%;
+    z-index: -1;
+}
+.slider__image div {
+    height: 100%;
+    width: 100%;
+}
+.slider__image div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.card__wrapper {
+    background-color: white;
+}
+.card__wrapper li {
+    width: 100%;
+}
+.card__wrapper img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+.color__white {
+    color: white;
+}
+
+

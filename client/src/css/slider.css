@@ -1,0 +1,62 @@
+/*CSS for slider related elements*/
+
+.container{
+    width: 100%;
+}
+
+h4{
+    font-size: 1rem;
+    color: #cca8a8;
+}
+
+.container {
+    text-align: center;
+}
+
+.language-sel {
+    margin-top: 30px;
+    padding-bottom: 10px;
+    background-color: #f6e4e2;
+    min-height: 40px;
+}
+
+#search {
+    background-color:#b1b1b138;
+    height: 40px;
+
+}
+
+.material-icons {
+    padding-top: 10px;
+}
+
+.post-count{
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    background: #ecf0f1;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 100%;
+    color: #333333;
+    font-weight: 600;
+    transition: all .2s ease;
+}
+
+
+a {
+    color: gray;
+}
+
+
+.card-action i {
+    padding: 0;
+    margin: 0;
+}
+
+.slick-active {
+
+}
+

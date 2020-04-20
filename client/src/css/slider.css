@@ -1,4 +1,5 @@
 /*CSS for slider related elements*/
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
 .container{
     width: 100%;
@@ -14,6 +15,7 @@ h4{
 }
 
 .language-sel {
+    font-family: Raleway,Helvetica,sans-serif;
     margin-top: 30px;
     padding-bottom: 10px;
     background-color: #f6e4e2;
@@ -21,14 +23,11 @@ h4{
 }
 
 #search {
-    background-color:#b1b1b138;
+    background-color:#fff;
     height: 40px;
 
 }
 
-.material-icons {
-    padding-top: 10px;
-}
 
 .post-count{
     width: 40px;
@@ -51,12 +50,15 @@ a {
 }
 
 
+.card-content p{
+    font-family: Raleway,Helvetica,sans-serif;
+    letter-spacing: .09em;
+    color: #777;
+    font-weight: 400;
+}
+
 .card-action i {
     padding: 0;
     margin: 0;
-}
-
-.slick-active {
-
 }
 

@@ -26,7 +26,7 @@ class Landing extends React.Component  {
                     swipeToSlide={true}
                     focusOnSelect={true}
                 >
-                    <div className='language-sel' onClick={()=> this.storeLang('English')}><h4>English</h4></div>
+                    <div className='language-sel' onClick={()=> this.storeLang('English')}><h4>ENGLISH</h4></div>
                     <div className='language-sel' onClick={()=> this.storeLang('Korean')}><h4>KOREAN</h4></div>
                     <div className='language-sel'><h4>JAPANESE</h4></div>
                     <div className='language-sel'><h4>CHINESE</h4></div>
@@ -37,9 +37,9 @@ class Landing extends React.Component  {
 
                 <h4>{}</h4>
                 <div className='row'>
-                    <MenuCard title='Forum'/>
-                    <MenuCard title='Translate' link='/translate'/>
-                    <MenuCard title='Chat'/>
+                    <MenuCard title='FORUM'/>
+                    <MenuCard title='TRANSLATE' link='/translate'/>
+                    <MenuCard title='CHAT'/>
                 </div>
             </div>
 

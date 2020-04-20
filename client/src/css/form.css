@@ -1,0 +1,102 @@
+
+
+
+h2 {
+    font-family: 'Quicksand', sans-serif;
+    color: #988c92;
+    font-size: 30px;
+    margin: 5rem 0rem;
+
+}
+
+input:focus {
+    border-bottom: 1px solid #ccc2c7 !important;
+    box-shadow: 0 1px 0 0 #ccc2c7 !important;
+}
+
+
+.btn-flat {
+    color: #cca8a8 !important;
+}
+
+form {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+form h2, form h3, form h4{
+    color: #686e67;
+    margin-bottom: 0;
+}
+form h2{
+
+    font-size: 2em
+}
+
+form h3{
+    font-size: 1.5em
+}
+
+form h4{
+    font-size: 1.2em;
+}
+
+label{
+    float: left;
+}
+
+Field {
+    background-color: white;
+}
+
+#custom_input {
+    border-bottom: 1px solid #ccc2c7;
+}
+
+#nounderline {
+    border-bottom:none;
+}
+
+.MuiSelect-selectMenu{
+    color: white !important;
+    font-family: Raleway, Helvetica, sans-serif !important;
+
+}
+
+.MuiInput-root{
+    background-color: #ccc2c7;
+    margin-top: 15px;
+    margin-right: 10px;
+    display: block !important;
+    color: white;
+}
+
+input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+    display: none;
+}
+
+.option_label {
+    color: #ccc2c7;
+    display: inline-block;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 5px 15px;
+}
+
+input[type=radio]:checked + label{
+
+    background-color: #ccc2c7;
+    color: white;
+}
+
+
+.radio-group {
+    margin-top: 15px;
+    border: solid 1px #ccc2c7;
+    display: inline-block;
+    border-radius: 10px;
+    overflow: hidden;
+
+}

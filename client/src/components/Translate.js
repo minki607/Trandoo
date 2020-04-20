@@ -13,7 +13,6 @@ class Translate extends React.Component {
     render(){
         return (
             <div className='collection'>
-                <h1>한국어</h1>
                 <h3>{this.props.lang}</h3>
                 <Link to='translate/new'>Request Translation</Link>
             </div>

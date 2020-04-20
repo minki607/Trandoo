@@ -1,0 +1,30 @@
+
+.tag {
+
+  border-radius: 4px;
+  background: #ccc2c7;
+  float: left;
+  margin: 5px 5px;
+  padding: 4px;
+
+  & i {
+    cursor: pointer;
+  }
+
+  & span {
+    font-family: Raleway,Helvetica,sans-serif;
+    padding: 5px 5px;
+    font-size: 1em;
+    color: white;
+    font-weight: 600;
+
+
+  }
+}
+
+
+
+.tag-icon {
+  font-size: 1em;
+  color: white;
+}

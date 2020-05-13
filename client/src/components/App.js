@@ -11,6 +11,7 @@ import TranslateNew from "./translation/Translate";
 
 
 
+
 class App extends React.Component {
 
 
@@ -27,9 +28,9 @@ class App extends React.Component {
                 <BrowserRouter>
                     <Header/>
                      <div className='container'>
-                            <Route exact path="/" component={Landing}/>
+                            <Route exact path='/' component={Landing}/>
                             <Route exact path='/translate' component={Translate}/>
-                         <Route exact path='/translate/new' component={TranslateNew}/>
+                            <Route exact path='/translate/new' component={TranslateNew}/>
                       </div>
                 </BrowserRouter>
                 </div>

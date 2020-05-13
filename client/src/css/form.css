@@ -17,6 +17,7 @@ input:focus {
 
 .btn-flat {
     color: #cca8a8 !important;
+    margin: 10px;
 }
 
 form {
@@ -98,5 +99,61 @@ input[type=radio]:checked + label{
     display: inline-block;
     border-radius: 10px;
     overflow: hidden;
+}
+
+.completion_date{
+    color: #fff;
+    background-color: #ccc2c7;
+    padding: 5px;
+    border-radius: 5px;
+    font-family: Raleway, Helvetica, sans-serif;
+}
+
+.error , .no_error {
+    margin-top: 5px;
+    margin-bottom: 20px;
+}
+
+
+.error {
+    color: #9c8e94;
+    background-color: #9485921f;
+    padding: 5px;
+    font-family: Raleway,Helvetica,sans-serif;
+    letter-spacing: 0.09rem
+}
+
+
+.confirm-block h3 {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    padding: 8px;
+    background-color: #cdc2c7;
+    border-radius: 3px;
+    color: white;
+
+}
+
+.confirm-block h2 {
+    margin: 0;
+}
+
+.confirm-block p{
+    
+    font-family: Raleway,Helvetica,sans-serif;
+    letter-spacing: 0.09rem;
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: 5px;
+    padding: 10px;
+    word-break: break-word;
+
+}
+
+.divider {
+    max-width:700px;
+    margin: 20px auto;
 
 }

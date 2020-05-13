@@ -9,9 +9,9 @@ export default ({ input, label, children, meta: {error, touched}}) => {
             <br/>
             <Select
                 disableUnderline
-                errorText={touched && error}
                 {...input}
-                children={children}/>
+                children={children}/>        
+            {touched && error ? (<div className='error'> {touched && error}</div>): <div className='no_error'> </div>}  
             <br/>
         </div>
     )

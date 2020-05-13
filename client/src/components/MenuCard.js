@@ -10,7 +10,7 @@ const MenuCard = (props) => {
                 <div className="card-stacked">
                     <Link to={props.link} className="card-content">
                         <p>{props.title}</p>
-                        <div className='post-count'>3</div>
+                        <div className='post-count'></div>
                     </Link>
 
                     <div className="card-action">

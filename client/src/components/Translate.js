@@ -19,7 +19,6 @@ class Translate extends React.Component {
         )
 }
 
-
 }
 
 function mapStateToProps(state) {

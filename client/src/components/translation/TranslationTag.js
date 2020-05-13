@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import '../../css/tags.scss'
-export default ({input, label, meta: {error, touched}}) => {
+export default ({input  , label, meta: {error, touched}}) => {
     const [tags, setTags] = useState([])
 
     const addTags = event => {
@@ -21,17 +21,15 @@ export default ({input, label, meta: {error, touched}}) => {
         setTags(tags.filter((_,index) => index !== indexRemove ))
     }
 
-
-
     return (
         <div className='col s12'>
             <label>{label}</label>
             <br/>
             <div className='tagHere'>
-                <input placeholder='Separate tags by space (Max 3)'
+                <input {...input} placeholder='Separate tags by space (Max 3)'
                        style={{marginBottom: '5px'}}
                        onKeyUp={addTags}
-                       disabled={tags.length     >= 3 ? true : false }
+                       disabled={tags.length >= 3 ? true : false }
                 />
 
                 {

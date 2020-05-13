@@ -8,7 +8,7 @@ class Stripe extends React.Component{
     render(){
         return (
             <StripeCheckout
-                name="Emailer"
+                name="Lang"
                 description='$5 for 5 email credits'
                 amount={500}
                 token={ token => this.props.handleToken(token)}

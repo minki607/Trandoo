@@ -19,14 +19,13 @@ export default ({input, label, type, meta: {error, touched}}) => {
     const renderField = () =>{
         return (
             <div className="radio-group">
-                <input {...input} type={type} checked={due =='1'} id="option-one" name="selector" value='1' onClick={onDateChange}/><label  className='option_label'  htmlFor="option-one">1d</label>
-                <input {...input} type={type} checked={due =='3'} id="option-two" name="selector" value='3' onClick={onDateChange}/><label className='option_label' htmlFor="option-two">3d</label>
-                <input {...input} type={type} checked={due =='7'}id="option-three" name="selector" value='7' onClick={onDateChange}/><label className='option_label'  htmlFor="option-three">7d</label>
-                <input {...input} type={type} checked={due == '14'} id="option-four" name="selector" value='14' onClick={onDateChange}/><label className='option_label'  htmlFor="option-four">14d</label>
-                <input {...input} type={type} checked={due == '30'} id="option-five" name="selector" value='30' onClick={onDateChange}/><label className='option_label'  htmlFor="option-five">30d+</label>
+                <input {...input} type={type} checked={due ==='1'} id="option-one" name="selector" value='1' onClick={onDateChange}/><label  className='option_label'  htmlFor="option-one">1d</label>
+                <input {...input} type={type} checked={due ==='3'} id="option-two" name="selector" value='3' onClick={onDateChange}/><label className='option_label' htmlFor="option-two">3d</label>
+                <input {...input} type={type} checked={due ==='7'}id="option-three" name="selector" value='7' onClick={onDateChange}/><label className='option_label'  htmlFor="option-three">7d</label>
+                <input {...input} type={type} checked={due === '14'} id="option-four" name="selector" value='14' onClick={onDateChange}/><label className='option_label'  htmlFor="option-four">14d</label>
+                <input {...input} type={type} checked={due === '30'} id="option-five" name="selector" value='30' onClick={onDateChange}/><label className='option_label'  htmlFor="option-five">30d+</label>
             </div>
         )
-
         }
 
     return (
@@ -35,10 +34,8 @@ export default ({input, label, type, meta: {error, touched}}) => {
             <br/>
                  {renderField()}
                  <br/>
-                {due ? (calcDue(due)).toString() : null}
-            <div className='red-text' style={{marginBottom: '20px'}}>
-                {touched && error}
-            </div>
+            {due ? <span className='completion_date'> {calcDue(due).toString()}</span> : null}
+            {touched && error ? (<div className='error'> {touched && error}</div>): <div className='no_error'> </div>}
 
 
         </div>

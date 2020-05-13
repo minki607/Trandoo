@@ -14,3 +14,10 @@ export const handleToken = (token) => async dispatch => {
 export const fetchLang = () => (dispatch) => {
     dispatch({type: FETCH_LANG, payload: localStorage.getItem('language') })
 }
+
+export const submitRequest = (values, history) => async dispatch =>{
+    const res = await axios.post('/api/translate', values)
+    
+    history.push('/translate')
+    dispatch({type: FETCH_USER, payload: res.data})
+}

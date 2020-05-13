@@ -1,8 +1,10 @@
-import React from "react";
-import TranslateForm from "./TranslateForm";
-import TranslateReview from "./TranslateReview";
+import React from "react"
+import TranslateForm from "./TranslateForm"
+import TranslateReview from "./TranslateReview"
+import {reduxForm} from 'redux-form'
 import '../../css/form.css'
 
+//shows request form and form review 
 class TranslateNew extends React.Component {
 
     state = {showReview: false}
@@ -25,4 +27,6 @@ class TranslateNew extends React.Component {
     }
 }
 
-export default TranslateNew
+export default reduxForm({
+    form: 'translateForm'
+})(TranslateNew)

@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React from 'react'
 import Slider from 'react-slick';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,8 +10,6 @@ import {connect} from "react-redux";
 
 class Landing extends React.Component  {
 
-    z
-
 
     storeLang = (lang) =>{
     localStorage.setItem('language', lang)
@@ -20,7 +18,7 @@ class Landing extends React.Component  {
     render(){
         return (
 
-            <div className='container'>
+            <div>
                 <Slider
                     slidesToShow={4}
                     swipeToSlide={true}

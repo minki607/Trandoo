@@ -4,15 +4,18 @@ body {
 }
 
 nav {
+    box-shadow: none;
     font-family: 'Quicksand', sans-serif;
 }
 .nav-wrapper {
     background-color: white;
 }
 
-nav .brand-logo {
-    color: #cca8a8;
-
+nav .brand-logo img{
+    max-width: 300px;
+    max-height: 40px;
+    margin-top: 10px;
+    opacity: 0.9;
 }
 
 #nav-mobile {

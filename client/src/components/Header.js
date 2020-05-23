@@ -2,7 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Link } from 'react-router-dom'
 import Stripe from './Stripe'
-import '../css/header.css'
+import '../css/nav.css'
 
 class Header extends React.Component {
 
@@ -24,7 +24,8 @@ class Header extends React.Component {
         return (
             <nav>
                 <div className="nav-wrapper">
-                    <Link to={this.props.auth ? '/dashboard  ' : '/'} className="brand-logo" style={{margin: '0 15px'}}>Lang</Link>
+                    <Link to={this.props.auth ? '/dashboard  ' : '/'} className="brand-logo" style={{margin: '0 15px'}}>
+                    <img src='/images/transdoo.png' alt='transdoo_logo'/></Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         {this.renderButton()}
                     </ul>

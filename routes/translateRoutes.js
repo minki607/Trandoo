@@ -7,6 +7,10 @@ const Translate = mongoose.model('translation')
 
 module.exports = app => {
 
+    app.get('/api/translate', async (req,res) => {
+        const translation = await Translate.find({})
+        res.send(translation)
+    })
 
     app.post('/api/translate', requireLogin, requireCredits, async (req, res) => {
         const {title, language, completeIn, body } = req.body

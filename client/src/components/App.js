@@ -17,7 +17,6 @@ class App extends React.Component {
 
     componentDidMount() {
         this.props.fetchUser();
-        this.props.fetchLang();
     }
 
     render(){
@@ -27,8 +26,8 @@ class App extends React.Component {
             <div>
                 <BrowserRouter>
                     <Header/>
+                    <Route exact path='/' component={Landing}/>
                      <div className='container'>
-                            <Route exact path='/' component={Landing}/>
                             <Route exact path='/translate' component={Translate}/>
                             <Route exact path='/translate/new' component={TranslateNew}/>
                       </div>
@@ -36,7 +35,6 @@ class App extends React.Component {
                 </div>
         )
     }
-
 }
 
 export default connect(null, actions)(App)

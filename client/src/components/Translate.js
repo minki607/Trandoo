@@ -1,28 +1,66 @@
-import React from 'react'
-import {Link} from "react-router-dom";
-import {connect} from "react-redux";
-import * as actions from '../actions'
+import React, {Fragment} from 'react'
+import TranslationList from './TranslationList'
+import RecentList from './RecentList'
+import TagList from './TagList'
+import RecommendedList from './RecommendedList'
+import MenuCard from './MenuCard'
+import useWindowSize from "../hooks/hooks.js";
+import SideBar from './SideBar'
+import '../css/translation_list.css'
 
 
-class Translate extends React.Component {
 
-    componentDidMount() {
-        this.props.fetchLang();
-    }
+const Translate = () => {
 
-    render(){
+    const size = useWindowSize();
+
+    const menuPaths = [
+        {
+          name: 'Dashboad',
+          path: '/',
+          icon: 'dashboard'
+        },
+        {
+          name: 'My Request',
+          path: '/request',
+          icon: 'assignment'
+        },
+        {
+          name: 'My Answer',
+          path: '/answer',
+          icon: 'rate_review'
+
+        }
+        
+      ];
+
         return (
-            <div className='collection'>
-                <h3>{this.props.lang}</h3>
-                <Link to='translate/new'>Request Translation</Link>
-            </div>
+            
+
+            <Fragment>
+                <div className='row'> 
+                
+                    <div className='col s12 l8' >
+                        <div className={`menu ${(size.width >= 1300 && size.width <= 1700)  ? 'empty-margin' : ''}`}>
+                            <SideBar paths={menuPaths} title='User 1'/>
+                            <MenuCard title='Request Translation' link='/translate/new' icon='translate'/>
+                            <MenuCard title='Live Translation' icon='chat'/>
+                            <MenuCard title='Leaderboard' icon='stars'/>
+                        </div>
+                        <div className={`trans-list ${(size.width >= 1300 && size.width <= 1700)  ? 'empty-margin' : ''}`}>
+                        <TranslationList/>
+                        </div>
+                    </div>
+                    <div className='col s12 l4'>
+                        <RecommendedList/>
+                        <RecentList/>
+                        <TagList/>
+                    </div>
+                </div>
+            </Fragment>
         )
 }
 
-}
 
-function mapStateToProps(state) {
-    return { lang: state.lang };
-}
 
-export default connect(mapStateToProps, actions)(Translate)
+export default Translate

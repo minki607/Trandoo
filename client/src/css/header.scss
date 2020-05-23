@@ -1,0 +1,257 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap");
+
+$font-01: "Raleway", sans-serif;
+
+$gradient-02: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+$gradient-01: linear-gradient(to top, #fff 0%, #efebed 100%);
+
+$m-01: #9197ae;
+$m-02: #505050;
+$m-03: #d68492;
+
+@mixin sm {
+   @media screen and (max-width: 830px) {
+      @content;
+   }
+}
+
+.header {
+  width: 100%;
+}
+
+.header-image {
+  position: absolute;
+  max-width: 500px;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  @include sm {
+    opacity: 0.1;
+ }
+  
+}
+
+.title_description {
+  color: $m-03;
+  font-weight: 700;
+}
+
+.mainNav {
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $m-01;
+    text-transform: uppercase;
+    padding: 0 40px;
+    @include sm {
+       padding: 0 20px;
+    }
+ 
+    &_logo {
+       font-weight: 800;
+       letter-spacing: 1px;
+       font-size: 18px;
+    }
+ 
+    &_links {
+       display: flex;
+       @include sm {
+          display: none;
+       }
+    }
+ 
+    &_link {
+       letter-spacing: 1px;
+       font-size: 14px;
+       margin-left: 20px;
+       font-weight: 600;
+       box-shadow: inset 0px -10px 0px rgba(white, 0.5);
+       transition: all 0.4s ease, transform 0.2s ease;
+       padding: 2px 4px;
+       transform: translateY(0px); 
+       
+       &:hover {
+         transform: translateY(-5px);
+         box-shadow: inset 0px -20px 0px white; 
+       }
+    }
+ 
+    &_icon {
+       background-image: url(https://rafaelalucas91.github.io/assets/icons/black/icon-141.svg);
+       width: 32px;
+       height: 32px;
+       background-size: contain;
+       background-repeat: no-repeat;
+       background-position: center;
+       display: none;
+ 
+       @include sm {
+          display: block;
+       }
+    }
+ }
+ 
+ .boxHeader {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 0 40px;
+    background-image: $gradient-01;
+    
+ 
+    @include sm {
+       padding: 0 20px;
+    }
+ 
+    &_content {
+       max-width: 1110px;
+       min-height: 600px;
+       left: 50%;
+       transform: translateX(-50%);
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       position: relative;
+ 
+       @include sm {
+          min-height: 500px;
+          z-index: 999;
+       }
+    }
+ 
+    &_text {
+       z-index: 1;
+       color: $m-02;
+       background-color: rgba(193, 191, 191, 0.1);
+       padding: 40px;
+       max-width: 830px;
+       width: 70%;
+       animation: text 0.8s 0.6s ease backwards;
+       position: relative;
+       
+       &:before {
+          content: "";
+          position: absolute;
+          width: 5px;
+          height: 100%;
+          background-color: rgba(#ccc2c7, 0.5);
+          top:0;
+          left:0;
+          animation: line 0.8s 0.6s ease backwards;
+          @keyframes line {
+          0% {
+             right:0;
+             width:100%;
+             opacity:0;
+          }
+       }
+       }
+ 
+       @include sm {
+          padding: 20px;
+          margin: 90px 0 40px 0;
+          width: 100%;
+       }
+ 
+       @keyframes text {
+          0% {
+             opacity: 0;
+             transform: translateX(200px);
+          }
+       }
+    }
+ 
+    &_subTitle {
+       text-align: center;
+       text-transform: uppercase;
+       font-weight: 600;
+       letter-spacing: 2px;
+       margin-bottom: 16px;
+       color: $m-02;
+    }
+ 
+    &_title {
+       text-transform: uppercase;
+       text-align: center;
+       font-weight: 200;
+       letter-spacing: 2px;
+       margin-bottom: 24px;
+       font-size: 40px;
+       color: $m-02;
+ 
+       @include sm {
+          margin-bottom: 16px;
+          font-size: 28px;
+       }
+    }
+ 
+    &_description {
+       text-align: center;
+       letter-spacing: 0.5px;
+       font-size: 16px;
+       line-height: 26px;
+       margin-bottom: 50px;
+       @include sm {
+          font-size: 14px;
+       }
+    }
+
+    &_description .emphasize{
+      color: #484646;
+      padding-bottom: 3px;
+      font-weight:bold;
+      line-height: 1.8;
+      display: inline;
+      background-image: linear-gradient(
+            transparent 60%,
+            #fde9f6b0 50%,
+            #c0b5ba 95%,
+            transparent 60%,
+            transparent 90%
+        );
+        background-repeat: no-repeat;
+        background-size: 0% 100%;
+        animation: animatedBackground 2s cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s forwards;
+     }
+     @keyframes animatedBackground {
+      to {
+          background-size: 100% 100%;
+      }
+    }
+ 
+  }
+ 
+ .cta {
+   display: block;
+   margin: 0 auto !important;
+    padding: 16px 32px;
+    color: $m-02;
+    background-color: transparent;
+    border: 1px solid rgba($m-02, 0.4);
+    font-family: $font-01;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: inset 0px 0px 0px rgba($m-02, 0.2);
+    transition: all 0.4s ease;
+
+    &:hover {
+       border: 1px solid rgba($m-02, 0.1);
+       box-shadow: inset 0px -80px 0px rgba($m-02, 0.1);
+       transform: translateY(-5px);
+    }
+
+    &:focus {
+      background-color: #ccc2c7;
+    }
+    @include sm {
+      width: 100%;
+    }
+
+
+ }

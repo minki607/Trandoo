@@ -1,6 +1,5 @@
-/*CSS for slider related elements*/
+/*CSS for landing related elements*/
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
-
 
 
 h4{
@@ -10,6 +9,7 @@ h4{
 
 .container {
     text-align: center;
+    width: 90%;
 }
 
 .language-sel {
@@ -19,13 +19,6 @@ h4{
     background-color: #f6e4e2;
     min-height: 40px;
 }
-
-#search {
-    background-color:#fff;
-    height: 40px;
-
-}
-
 
 .post-count{
     width: 40px;
@@ -48,7 +41,7 @@ a {
 }
 
 
-.card-content p{
+.menucard-content p{
     font-family: Raleway,Helvetica,sans-serif;
     letter-spacing: .09em;
     color: #777;

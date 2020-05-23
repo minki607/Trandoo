@@ -3,7 +3,7 @@ import React from 'react'
 const SearchBar = () => {
 
     return (
-        <div className="nav-wrapper">
+        <div className='container-fluid'>
             <form>
                 <div className="input-field">
                     <input id="search" type="search" required/>

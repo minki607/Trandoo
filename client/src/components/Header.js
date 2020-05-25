@@ -25,7 +25,7 @@ class Header extends React.Component {
             <nav>
                 <div className="nav-wrapper">
                     <Link to={this.props.auth ? '/dashboard  ' : '/'} className="brand-logo" style={{margin: '0 15px'}}>
-                    <img src='/images/transdoo.png' alt='transdoo_logo'/></Link>
+                    <img src='/images/trandoo.png' alt='trandoo_logo'/></Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         {this.renderButton()}
                     </ul>

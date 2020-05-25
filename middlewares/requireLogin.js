@@ -1,6 +1,8 @@
 module.exports = (req, res, next) => {
-    if (!req.user) {
-        res.redirect('/auth/google')
+    if (req.user) {
+        next();
+    } else {
+        res.redirect('/login')
     }
-    else return next();
+    
 }

@@ -6,22 +6,25 @@ import * as actions from '../actions/types';
 import {connect} from 'react-redux';
 
 class Landing extends React.Component  {
-
+    
     render(){
         return (
             <Fragment>
+                {console.log('')}
                 <header className='boxHeader'>
                     <div className='boxHeader_content'>
                         <article className='boxHeader_text'>
-                            <p className='boxHeader_subTitle'>Transdoo</p>
+                            <p className='boxHeader_subTitle'>Trandoo</p>
                             <h2 className='boxHeader_title'>Translation platform </h2>
                             <p className='boxHeader_description'>
-                            <span className='title_description'>TRANSDOO</span> is designed for anyone 
+                            <span className='title_description'>TRANDOO</span> is designed for anyone 
                             who requires <span className='emphasize'>human translation</span>. <br/>
                             We help you get the translated version of your request from people who 
                             understand the language inside out.
                             </p>
-                            <Link to='/translate'><button className='cta'>Translate</button></Link>
+                            <Link to={this.props.auth ? '/translate' : '/login'}>
+                                <button className='header-btn'>{this.props.auth ? 'Translate' : 'Login / Sign Up'}</button>
+                            </Link>
                         </article>
                         <img className='header-image' src='../images/landing_header.png' alt='header'/>   
                     </div>

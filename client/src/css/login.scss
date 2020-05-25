@@ -1,0 +1,88 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap");
+
+$font-01: "Raleway", sans-serif;
+$col-01: #505050;
+
+@mixin sm {
+  @media screen and (max-width: 830px) {
+     @content;
+  }
+}
+
+  .login-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-image: linear-gradient(to top, #fff 0%, #efebed 100%);
+  }
+  .login-box { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row-reverse;
+    max-width: 800px;
+    background-color: white;
+    box-shadow: 0 0 40px rgba(0,0,0,0.16);
+    overflow: hidden;
+    margin: 0 auto;
+    border-radius: 12px;
+    @include sm {
+      flex-direction: column;
+      box-shadow: none;
+      margin-top: 0;
+      width: 100%;
+      background-color: transparent;
+   }
+  }
+
+  .content {
+    font-family: $font-01;
+    max-width: 500px;
+    padding: 40px;
+  }
+
+  .img-wrapper {
+    display: flex;
+    align-items: flex-end;
+    max-width: 800px;
+    min-height: 100%;
+    background-color: #fffdf2;
+  }
+
+  .img-wrapper img {
+    display: block;
+    max-width: 500px;
+    width: 100%;
+    @include sm {
+      display: none;
+   }
+    
+  }
+
+  .login-title {
+    text-align: center;
+    background-color: #f6f4f5;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 20px;
+    color : $col-01;
+    @include sm {
+      background-color: transparent;
+   }
+   
+  }
+
+  .login-btn {
+    min-width: 250px;
+    margin-bottom: 8px !important;
+    font-size: 10px;
+  }
+  
+  .img-icon img {
+    float: left;
+    height: 15px;
+    width: 15x;
+  }
+
+   

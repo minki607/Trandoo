@@ -1,5 +1,5 @@
 /*CSS for landing related elements*/
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap");
 
 
 h4{
@@ -10,46 +10,21 @@ h4{
 .container {
     text-align: center;
     width: 90%;
-}
+    }
 
-.language-sel {
-    font-family: Raleway,Helvetica,sans-serif;
-    margin-top: 30px;
-    padding-bottom: 10px;
-    background-color: #f6e4e2;
-    min-height: 40px;
-}
-
-.post-count{
-    width: 40px;
-    height: 40px;
-    position: absolute;
-    top: 15px;
-    right: 10px;
-    background: #ecf0f1;
-    text-align: center;
-    line-height: 40px;
-    border-radius: 100%;
-    color: #333333;
-    font-weight: 600;
-    transition: all .2s ease;
-}
+    a {
+        color: gray;
+    }
 
 
-a {
-    color: gray;
-}
+    .menucard-content p{
+        font-family: 'Raleway',sans-serif;
+        letter-spacing: .09em;
+        color: #424242;
+    }
 
-
-.menucard-content p{
-    font-family: Raleway,Helvetica,sans-serif;
-    letter-spacing: .09em;
-    color: #777;
-    font-weight: 400;
-}
-
-.card-action i {
-    padding: 0;
-    margin: 0;
-}
+    .card-action i {
+        padding: 0;
+        margin: 0;
+    }
 

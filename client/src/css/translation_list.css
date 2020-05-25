@@ -1,3 +1,11 @@
+/*prevent firefox from making the font-weight bolder than it should be*/
+@-moz-document url-prefix() {
+    body{
+        font-weight: 300;
+    }
+
+    
+  }
 
 .material-icons {
 color: #505050ad;
@@ -5,7 +13,7 @@ color: #505050ad;
 
 .collection {
     margin: 0 ;
-    font-family: Raleway, Helvetica, sans-serif !important;
+    font-family: 'Raleway', Helvetica, sans-serif !important;
     letter-spacing: 0.09rem
 }
 
@@ -85,7 +93,7 @@ color: #505050ad;
 }
 
 .sidenav {
-    font-family: Raleway, Helvetica, sans-serif !important;
+    font-family: 'Raleway', Helvetica, sans-serif !important;
     background-color: #505050;
     width: 200px;
     top: 95px;

@@ -24,10 +24,12 @@ class Header extends React.Component {
         return (
             <nav>
                 <div className="nav-wrapper">
-                    <Link to={this.props.auth ? '/dashboard  ' : '/'} className="brand-logo" style={{margin: '0 15px'}}>
+                
+                    <Link to={this.props.auth ? '/translate' : '/'} className="brand-logo" style={{margin: '0 15px'}}>
                     <img src='/images/trandoo.png' alt='trandoo_logo'/></Link>
                     <ul id="nav-mobile" className="right hide-on-med-and-down">
                         {this.renderButton()}
+    
                     </ul>
                 </div>
             </nav>

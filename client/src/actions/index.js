@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {FETCH_USER, FETCH_REQ, LOADER_ON, LOADER_OFF} from "./types";
+import {FETCH_USER, FETCH_REQ, FETCH_SREQ, LOADER_ON, LOADER_OFF} from "./types";
 
 export const fetchUser = () => async (dispatch) => {
         const res = await axios.get('/api/current_user')
@@ -25,3 +25,10 @@ export const fetchRequests = () => async dispatch => {
     dispatch({type: FETCH_REQ, payload: res.data})
     dispatch({type: LOADER_OFF})
 }   
+
+export const fetchRequest = (id) => async dispatch => {
+
+    const res = await axios.get(`/api/translate/view/${id}`)
+    dispatch({type: FETCH_SREQ, payload: res.data})
+
+}

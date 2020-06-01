@@ -3,9 +3,11 @@ const { Schema } = mongoose
 
 
 const userSchema = new Schema({
+    name: String,
     googleId: String,
     facebookId: String,
     githubId: String,
+    prefLanguage: String,
     credits: { type: Number, default: 0}
 })
 

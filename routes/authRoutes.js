@@ -1,15 +1,21 @@
 const passport = require('passport')
-
+const mongoose = require('mongoose')
+const User = mongoose.model('users')
 
 module.exports = app => {
 
 
     app.get('/auth/google',
-        passport.authenticate('google', { scope: ['openid', 'email'] }))
+        passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }))
 
     app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/login'}),
-        (req,res) => {
-         res.redirect('/translate')
+        async (req,res) => {      
+       
+        if (req.user.prefLanguage) {
+            res.redirect('/translate');
+          } else {
+            res.redirect('/setPref');
+          }
         }
         )
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import ReactHtmlParser from 'react-html-parser' // to render html tags 
-import {withRouter} from 'react-router-dom' // get access to history obbject's properties 
+import {withRouter} from 'react-router-dom' // get access to history object's properties 
 import * as actions from '../../actions';
 
 const TranslateReview = ({onCancel, formValues, submitRequest, history}) => {

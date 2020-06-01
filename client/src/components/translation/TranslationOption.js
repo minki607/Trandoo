@@ -4,7 +4,7 @@ import { Select } from '@material-ui/core';
 
 export default ({ input, label, children, meta: {error, touched}}) => {
     return (
-        <div className='col s6'>
+        <div className='col s12 m6'>
             <label>{label}</label>
             <br/>
             <Select

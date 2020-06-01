@@ -8,7 +8,9 @@
     import TranslationTag from "./TranslationTag";
     import {Link} from "react-router-dom";
     import { MenuItem} from '@material-ui/core';
+  
 
+    
 
     const FIELDS = [
         {label: 'Title', name:'title', error:'Provide a Title'},
@@ -21,7 +23,8 @@
     class TranslateForm extends React.Component {
 
         renderFields() {
-            return ( _.map(FIELDS, ({name, label}) => {
+            return ( 
+                _.map(FIELDS, ({name, label}) => {
                 switch (name) {
                     case 'language':
                         return(
@@ -45,10 +48,13 @@
 
         render(){
             return (
-                <div>
-                    <h2>Request Translation</h2>
+                <div className='request-form'>
+                    <div className='section-description'>
+                        <h2 className='trans-form-title'>Request Translation</h2>
+                        <p className='sub-title'>Post a translation request and we'll find someone who can get the job done on time</p>
+                    </div>
                     <form onSubmit={this.props.handleSubmit(this.props.onFormSubmit) }>
-                        <div className='row'>
+                        <div className='row fields'>
                             {this.renderFields()}
                         </div>
                         <button type='submit' className='btn-flat white-text right'>

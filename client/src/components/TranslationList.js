@@ -1,8 +1,10 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {fetchRequests} from '../actions'
 import LoadingSpinner from './LoadingSpinner'
 import {Line} from 'rc-progress'
+
 
 
 class TranslationList extends React.Component {
@@ -47,26 +49,27 @@ class TranslationList extends React.Component {
     renderRequests(){
         return this.props.trans.data.map((req,i) => {
             return (
-                <div key={i} className='collection col s12'>
-                   
-                    <div className='card-content'>
-                        <div><span className='language'>{req.language}</span> <span className='answer'>0 answer</span></div> 
-                        <span className='card-title'>{req.title}</span>
+                <Link key={i} to = {`/translate/view/${req._id}`}>  
+                    <div key={i} className='collection col s12'>  
+                            <div className='card-content'>
+                                <div><span className='language'>{req.language}</span> <span className='answer'>0 answer</span></div> 
+                                <span className='card-title'>{req.title}</span>
+                            </div>
+                            <div className='tag-title'>casual</div>
+                            <div className='tag-title'>fan-letter</div>
+                            <div className='tag-title'>formal</div>
+                        
+                            <Line percent={this.calcPercent(this.calcDate(req.completeIn))} 
+                            strokeWidth="1" 
+                            strokeColor={ this.updateColor(req.completeIn) }/>
                     </div>
-                    <div className='tag-title'>casual</div>
-                    <div className='tag-title'>fan-letter</div>
-                    <div className='tag-title'>formal</div>
-                
-                    <Line percent={this.calcPercent(this.calcDate(req.completeIn))} 
-                    strokeWidth="1" 
-                    strokeColor={ this.updateColor(req.completeIn) }/>
-            
-                </div>
+                </Link>
             )
         })
     }
 
     render() {
+        
         return (
             <div className='list-render'>
                 {this.props.trans.loading ? <LoadingSpinner/> : <div className='row'>
@@ -76,7 +79,7 @@ class TranslationList extends React.Component {
     }
     }    
 
-function mapStateToProps({trans}) {
+function mapStateToProps({ trans }) {
     return { trans }
 }
 

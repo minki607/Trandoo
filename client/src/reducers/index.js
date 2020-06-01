@@ -6,5 +6,5 @@ import transReducer from "./transReducer"
 export default combineReducers({
     auth: authReducer,
     form: formReducer,
-    trans: transReducer
+    trans: transReducer,
 })

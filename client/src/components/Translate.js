@@ -14,38 +14,19 @@ const Translate = () => {
 
     const size = useWindowSize();
 
-    const menuPaths = [
-        {
-          name: 'Dashboad',
-          path: '/',
-          icon: 'dashboard'
-        },
-        {
-          name: 'My Request',
-          path: '/request',
-          icon: 'assignment'
-        },
-        {
-          name: 'My Answer',
-          path: '/answer',
-          icon: 'rate_review'
-
-        }
-        
-      ];
-
         return (
-            
-
+        
             <Fragment>
                 <div className='row'> 
                 
                     <div className='col s12 l8' >
                         <div className={`menu ${(size.width >= 1300 && size.width <= 1700)  ? 'empty-margin' : ''}`}>
-                            <SideBar paths={menuPaths} title='User 1'/>
-                            <MenuCard title='Request Translation' link='/translate/new' icon='translate'/>
-                            <MenuCard title='Live Translation' icon='chat'/>
-                            <MenuCard title='Leaderboard' icon='stars'/>
+                            <SideBar title='User 1'/>
+                            <div className='menu-button'>
+                                <MenuCard title='Request Translation' link='/translate/new' icon='translate'/>
+                                <MenuCard title='Live Translation' icon='chat'/>
+                                <MenuCard title='Leaderboard' icon='stars'/>
+                            </div>
                         </div>
                         <div className={`trans-list ${(size.width >= 1300 && size.width <= 1700)  ? 'empty-margin' : ''}`}>
                         <TranslationList/>

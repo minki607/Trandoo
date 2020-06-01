@@ -10,7 +10,6 @@ class Landing extends React.Component  {
     render(){
         return (
             <Fragment>
-                {console.log('')}
                 <header className='boxHeader'>
                     <div className='boxHeader_content'>
                         <article className='boxHeader_text'>

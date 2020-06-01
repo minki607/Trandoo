@@ -229,8 +229,8 @@ $m-03: #d68492;
  
  .header-btn {
    
-   display: block;
-   margin: 0 auto;
+    display: block;
+    margin: 0 auto;
     padding: 16px 32px;
     color: $m-02;
     background-color: transparent;
@@ -253,7 +253,6 @@ $m-03: #d68492;
       background-color: #ccc2c7;
     }
     @include sm {
-
       width: 100%;
     }
 

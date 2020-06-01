@@ -29,7 +29,7 @@ export default ({input, label, type, meta: {error, touched}}) => {
         }
 
     return (
-        <div className='col s6'>
+        <div className='col s12 l6'>
             <label>{label}</label>
             <br/>
                  {renderField()}

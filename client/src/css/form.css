@@ -157,3 +157,47 @@ input[type=radio]:checked + label{
     margin: 20px auto;
 
 }
+
+.request-form {
+    background-color: #ffffff73;
+    border: 1px solid rgb(230, 230, 230);
+    max-width: 700px;
+}
+
+.fields {
+    margin: 40px;
+}
+
+.section-description {
+    margin: 40px 0 10px 50px;
+    text-align: left;
+}
+
+.trans-form-title {
+    margin-bottom: 0;
+    font-size: 20px;
+}
+.sub-title {
+    font-family: 'Raleway';
+    font-size: 13px;
+    color: gray;
+    max-width: 200px;
+}
+
+.link {
+    max-width: 195px;
+}
+
+.back-icon {
+    font-family: 'Raleway';
+    padding: 20px;
+}
+
+.back-icon i {
+    font-size: 13px;
+    margin-right: 10px;
+}
+
+.back-icon:hover {
+    color: #cdc2c7;
+}

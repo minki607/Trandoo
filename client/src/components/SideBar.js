@@ -6,16 +6,37 @@ export default function SideBar(props) {
   const [slider, setSlider] = useState(false);
   const size = useWindowSize();
 
+  const menuPaths = [
+    {
+      name: 'Dashboad',
+      path: '/',
+      icon: 'dashboard'
+    },
+    {
+      name: 'My Request',
+      path: '/request',
+      icon: 'assignment'
+    },
+    {
+      name: 'My Answer',
+      path: '/answer',
+      icon: 'rate_review'
+
+    }
+    
+  ];
+
   return (
     <Fragment>  
-            <a
-            href="#"
-            className="card toggle-sidenav col s12 sidenav-trigger"
-            onClick={() => setSlider(s => !s)}
-            >
-            <i className="material-icons left">{size.width > 1300 ? 'featured_video' : 'menu'}</i>
-            <i className="material-icons right">notifications_none</i>
-            </a>
+            
+      <a href="#"
+         className="toggle-sidenav"
+         onClick={() => setSlider(s => !s)}>
+        <div className='menu-icons'>
+            <i className="material-icons">{size.width > 1300 ? 'featured_video' : 'menu'}</i>
+            {/*<i className="material-icons">notifications_none</i> */}
+        </div>    
+      </a>
      
     
       <div
@@ -38,34 +59,41 @@ export default function SideBar(props) {
         <li>
           <h4>{props.title}</h4>
         </li>
-        {props.paths.map(elt => (
-          <li onClick={() => setSlider(s => !s)}>
+
+        {menuPaths.map((elt,i) => (
+          <li key={i} onClick={() => setSlider(s => !s)}>
             <Link to={elt.path}>
             <i className="material-icons">{elt.icon}</i>
               {elt.name}
             </Link>
           </li>
         ))}
+        
         <li>
-          <div className="divider" />
+          <div className="divider"/>
         </li>
+
         <li>
-          <a className="subheader">Account</a>
+            <a className="subheader">Account</a>
         </li>
+
         <li>
-          <a href="#!">
-            Manage Profile
-          </a>
-          <a href="#!">
-            Charge Credits
-          </a>
-          <li>
-          <div className="divider" />
+            <a href="#!">
+              Manage Profile
+            </a>
+            <a href="#!">
+              Charge Credits
+            </a>
         </li>
-          <a href="#!">
+
+         <li>
+            <div className="divider" />
+        </li>
+        
+        <li>
+            <a href="#!">
             Logout
-          </a>
-          
+            </a> 
         </li>
       </ul>
     </Fragment>

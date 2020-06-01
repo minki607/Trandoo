@@ -8,8 +8,15 @@ const Translate = mongoose.model('translation')
 module.exports = app => {
 
     app.get('/api/translate', async (req,res) => {
-        const translation = await Translate.find({})
+        const translations = await Translate.find({})
+        res.send(translations)
+    })
+
+    app.get('/api/translate/view/:id', async (req,res) => {
+        let id = req.params.id
+        const translation = await Translate.findById(id)
         res.send(translation)
+        
     })
 
     app.post('/api/translate', requireLogin, requireCredits, async (req, res) => {

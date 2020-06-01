@@ -1,0 +1,217 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap");
+
+$font-01: "Raleway", sans-serif;
+$gradient-01: linear-gradient(to top, #fff 0%, #efebed 100%);
+$animation-01: text 0.8s 0.6s ease backwards;
+
+@mixin sm {
+    @media screen and (max-width: 830px) {
+       @content;
+    }
+  }
+
+  @mixin xsm {
+    @media screen and (max-width: 450px) {
+       @content;
+    }
+  }
+
+
+.pref_page {width: 100%;}
+
+.page_left {
+  float: left;
+  width: 40%;
+  height: 100%;
+  background-image: $gradient-01;
+
+  &_content {
+    margin-top: 150px;
+  }
+  @include sm {
+      width:60%;
+  }
+  @include xsm {
+    width: 100%;
+ }
+}
+
+
+.page_right {
+  float: right;
+  width: 60%;
+  height: 100vh;
+  background-color: white;
+  @include sm {
+    width:40%;
+}
+  @include xsm {
+    width: 0%;
+ }
+  &_img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    opacity: 0.9;
+   
+  }
+}
+
+.pref_title {
+    animation: $animation-01;
+    margin-top: 0;
+}
+
+
+
+.pref_description{
+    animation: $animation-01;
+    font-family: $font-01;
+    text-align: center;
+    margin: 30px;
+} 
+
+.pref_button {
+   display: flex; 
+   justify-content: space-between;
+   max-width: 500px;
+   margin: 0 auto;
+   @include sm {
+    display: block;
+    margin: 20px;
+ }
+}
+#start-btn, #later-btn {
+    text-align: center;
+    font-size: 13px;  
+    animation: $animation-01; 
+    &:disabled {
+      opacity: 0.65; 
+      cursor: not-allowed;
+    }
+    @include sm {
+      max-width: 250px;
+      margin: 0 auto !important;
+  } 
+    
+}
+
+#start-btn{
+    border: 1px solid #41713166;
+    width:60%;
+    margin-left: 50px;
+    @include sm {
+       width: 100%;
+       margin: 0;
+     }
+}
+
+#later-btn{
+    border: 1px solid #ea545463;
+    width: 40%;
+    margin-right: 50px;
+    @include sm {
+        width: 100%;
+        margin: 0;
+     }
+}
+
+/* Bubble speech effect from https://leaverou.github.io/bubbly/ */
+.user-form{
+  margin: 50px;
+	position: relative;
+	background: #616161;
+  border-radius: .4em;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.user-form:after {
+  content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 15px solid transparent;
+	border-top-color: #616161;
+	border-bottom: 0;
+	margin-left: -15px;
+	margin-bottom: -15px;
+}
+
+.form-info {
+  font-family: $font-01;
+  text-align: center;
+  color:white;
+  padding: 50px;
+}
+
+.img-wrap {
+margin-top: 60px;
+}
+
+.img-wrap img {
+  max-width: 200px;
+  height: 200px;
+}
+
+.next-btn i, .previous-btn i {
+  font-size: 15px;
+  color: gray;
+}
+
+.next-btn, .previous-btn{
+  display: block;
+    margin: 0 auto;
+    padding: 16px 32px;
+    color: gray;
+    background-color: transparent;
+    border: none;
+    font-family: $font-01;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 600;
+    cursor: pointer;
+    &:hover {
+      color: #cdc2c7;
+   }
+
+   &:focus {
+     background-color: transparent;
+   }
+}
+
+.next-btn {
+  position: absolute;
+  right: 0;
+}
+
+.previous-btn {
+  position: absolute;
+  left:0;
+}
+
+.add-language-btn {
+  margin-bottom: 30px;
+}
+
+/*for react-group-transition*/
+
+.form-transition-enter {
+  opacity: .01;
+	
+  }
+  .form-transition-enter-active {
+    opacity: 1;
+    transition: all 500ms ease-in-out;
+  }
+
+.scrollable {
+    height: 100vh;
+    overflow: scroll;
+    overflow-x: hidden;
+
+}
+
+

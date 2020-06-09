@@ -1,38 +1,43 @@
 import React from 'react'
-import InputField from '../translation/TranslateField'
 import {Field} from 'redux-form'
+import AutoLanguageInput from './AutoLanguageInput'
+import MultipleLanguageInput from './MultipleLanguageInput'
 
 const LanguageField = ({ fields, meta: { touched, error, submitFailed }}) => {
+
     return (
         <ul>
             <li>
-            <button className='add-language-btn' type="button" onClick={() => fields.push({})}><i class="material-icons">add</i></button>
-            {(touched || submitFailed) && error && <span>{error}</span>}
+            <button className='add-language-btn' type="button" onClick={() => fields.push({})}><i className="material-icons">add</i></button>
+            {(touched || submitFailed) && error && <div className='error user_field_error'>{error}</div>}
+
             </li>
-                {fields.map((member, index) => (
+                {fields.map((language, index) => (
                     <li key={index}>
-                        <button
+                        <button className='right delete-btn'
                         type="button"
                         title="Remove Language"
                         onClick={() => fields.remove(index)}
-                        />
-                        <h4>Member #{index + 1}</h4>
-                        <Field
-                        name={`${member}.firstName`}
-                        type="text"
-                        component={InputField}
-                        label="First Name"
-                        />
-                        <Field
-                        name={`${member}.lastName`}
-                        type="text"
-                        component={InputField}
-                        label="Last Name"
-                        />
+                        > <i className="material-icons">close</i></button>
+                        <h4 className='language-title'>Language #{index + 1}</h4>
+                            <div className='container'>
+                                <Field
+                                name={`${language}.title`}
+                                type="text"
+                                component={AutoLanguageInput}
+                                label="Language"
+                                />
+                                <Field 
+                                name={`${language}.translate`}
+                                type="text"
+                                component={MultipleLanguageInput}
+                                />
+                            </div>
                     </li>
                 ))}
         </ul>
     )
     
 }
+
 export default LanguageField 

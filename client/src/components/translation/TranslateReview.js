@@ -35,16 +35,12 @@ const TranslateReview = ({onCancel, formValues, submitRequest, history}) => {
                 <div className='divider'/> 
             </div>
             </div>
-           
-
-         
+            
             <div className='confirm-block section'>
                 <h3>Body</h3>
                 <p>{ReactHtmlParser(formValues.body)}</p>
                 <div className='divider'/> 
             </div>
-          
-
 
             <button className='darken-3 btn-flat right' onClick={()=> submitRequest(formValues, history)}>
                 Submit

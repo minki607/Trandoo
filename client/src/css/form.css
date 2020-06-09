@@ -123,6 +123,13 @@ input[type=radio]:checked + label{
     letter-spacing: 0.09rem
 }
 
+.user_field_error {
+    background-color:#d4a3a3;
+    color: white;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
 
 .confirm-block h3 {
     max-width: 700px;

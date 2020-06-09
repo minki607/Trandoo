@@ -193,9 +193,45 @@ margin-top: 60px;
 }
 
 .add-language-btn {
-  margin-bottom: 30px;
+  background-color: transparent;
+  border: 1px solid #cdc2c7;
+  margin-bottom: 50px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius:3px;
+  &:hover{
+    background-color: gray;
+  }
+  &:focus{
+    background-color: transparent;
+  }
 }
 
+.add-language-btn i {
+  color: white;
+}
+
+.delete-btn {
+  box-shadow: none;
+  border: none;
+  padding: 5px;
+  margin-right: 20px;
+  background-color: #d4a3a3;
+  &:focus {
+    background-color: gray;
+  }
+}
+
+.delete-btn i {
+  font-size: 15px;
+  color: white;
+}
+
+.language-title {
+  font-family: $font-01;
+  color: white;
+  margin-left: 30px;
+}
 /*for react-group-transition*/
 
 .form-transition-enter {
@@ -214,4 +250,16 @@ margin-top: 60px;
 
 }
 
+.MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] .MuiAutocomplete-input {
+  text-align:center;
+  margin-left: 30px;
+}
 
+.MuiAutocomplete-paper{
+  text-align: center;
+  font-family: "Raleway"
+}
+
+.MuiAutocomplete-option{
+  color: gray;
+}

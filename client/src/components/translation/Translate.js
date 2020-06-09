@@ -24,7 +24,7 @@ class TranslateNew extends React.Component {
                 <div className='link'>
                     <Link to='/translate'>
                     <div className='back-icon'> 
-                    <i class="material-icons">arrow_back</i>Back to Dashboard
+                    <i className="material-icons">arrow_back</i>Back to Dashboard
                     </div>
                 </Link>
                 </div>

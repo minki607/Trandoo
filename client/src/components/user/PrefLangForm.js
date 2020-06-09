@@ -1,30 +1,29 @@
 import React from 'react'
-import { Field, FieldArray, reduxForm } from 'redux-form';
-import InputField from '../translation/TranslateField'
+import { FieldArray, reduxForm } from 'redux-form';
 import LanguageField from './LanguageField'
 
 
 const PrefLangForm = (props) => {
  
-    const { handleSubmit, pristine, previousPage, submitting } = props;
+    const { handleSubmit, previousPage} = props;
     return (
       <form onSubmit={handleSubmit}>
             <h4 className='form-info' style={{paddingBottom: '20px'}}>
-            Add up to 3 languages</h4>
+            Add up to 5 languages</h4>
                 <FieldArray name='languages' component={LanguageField}/>
             <div>
-                <button className="previous-btn" onClick={previousPage}>
-                    <i class="material-icons">navigate_before</i> Prev
+                <button type="button" className="previous-btn" onClick={previousPage}>
+                    <i className="material-icons">navigate_before</i> Prev
                 </button>
                 <button className="next-btn" type="submit"> Next
-                    <i class="material-icons">navigate_next</i>
+                <i className="material-icons">navigate_next</i>
                 </button>
             </div>
        </form>
        )
 }
 export default reduxForm({
-    form: 'wizardForm',
+    form: 'userForm',
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true,
   })(PrefLangForm);

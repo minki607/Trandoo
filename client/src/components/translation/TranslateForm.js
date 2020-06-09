@@ -8,10 +8,7 @@
     import TranslationTag from "./TranslationTag";
     import {Link} from "react-router-dom";
     import { MenuItem} from '@material-ui/core';
-  
-
     
-
     const FIELDS = [
         {label: 'Title', name:'title', error:'Provide a Title'},
         {label: 'Language', name:'language', error:'Select a Language'},
@@ -56,6 +53,7 @@
                     <form onSubmit={this.props.handleSubmit(this.props.onFormSubmit) }>
                         <div className='row fields'>
                             {this.renderFields()}
+                        
                         </div>
                         <button type='submit' className='btn-flat white-text right'>
                             Next

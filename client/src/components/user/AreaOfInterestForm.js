@@ -1,21 +1,21 @@
 import React from 'react'
-import { FieldArray, reduxForm } from 'redux-form';
-import LanguageField from './LanguageField'
+import { Field, reduxForm } from 'redux-form';
+import AutoInterestInput from './AutoInterestInput'
 
 
-const PrefLangForm = (props) => {
+const AreaOfInterestForm = (props) => {
  
     const { handleSubmit, previousPage} = props;
     return (
       <form onSubmit={handleSubmit}>
             <h4 className='form-info' style={{paddingBottom: '20px'}}>
-            Add up to 5 <span className='emphasize'>language set</span></h4>
-                <FieldArray name='languages' component={LanguageField}/>
+            Add in  areas of <span className='emphasize'>experties</span></h4>
+                <Field name='specialities' component={AutoInterestInput}/>
             <div>
                 <button type="button" className="previous-btn" onClick={previousPage}>
                     <i className="material-icons">navigate_before</i> Prev
                 </button>
-                <button className="next-btn" type="submit"> Next
+                <button className="next-btn" type="submit"> Review
                 <i className="material-icons">navigate_next</i>
                 </button>
             </div>
@@ -26,4 +26,4 @@ export default reduxForm({
     form: 'userForm',
     destroyOnUnmount: false,
     forceUnregisterOnUnmount: true,
-  })(PrefLangForm);
+  })(AreaOfInterestForm);

@@ -9,7 +9,7 @@ let UserDetailForm = (props) =>  {
     
         return (
             <form onSubmit={handleSubmit}>
-                <h4 className='form-info'>What Should We Call You?</h4>
+                <h4 className='form-info'>What Should We <span className='emphasize'>Call You?</span></h4>
                 <Field name='displayName' type='text' 
                 component={InputField} styleFor='user'/>
 

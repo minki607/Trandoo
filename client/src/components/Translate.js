@@ -18,7 +18,6 @@ const Translate = () => {
         
             <Fragment>
                 <div className='row'> 
-                
                     <div className='col s12 l8' >
                         <div className={`menu ${(size.width >= 1300 && size.width <= 1700)  ? 'empty-margin' : ''}`}>
                             <SideBar title='User 1'/>

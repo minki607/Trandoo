@@ -13,14 +13,15 @@ const useStyles = makeStyles(theme => ({
         border: "none"
       }
     }
+  
   }));
 
-const MultipleLanguageInput = ({input, meta: {touched, error, submitFailed}}) => {
+const AutoInterestInput = ({input, meta: {touched, error, submitFailed}}) => {
   
-    const language = [
-        {title: "KOREAN" , code:'ko'}, 
-        {title: "JAPANESE" , code: 'jp'}, 
-        {title: "CHINESE" , code: 'cn'}
+    const specialities = [
+        {title: "BUSINESS" }, 
+        {title: "IT"}, 
+        {title: "SLANG"}
     ]
 
 
@@ -33,10 +34,10 @@ const classes = useStyles()
         
           multiple
           classes={classes}
-          limitTags={2}
+          limitTags={4}
           value={input.value || []}
           id="multiple-limit-tags"
-          options={language}
+          options={specialities}
           onChange={(e, newValue) => {
             onChange(newValue);
           }}
@@ -46,11 +47,11 @@ const classes = useStyles()
             <TextField 
             {...params}
              variant="outlined" 
-             placeholder="Translatable Language(s)" 
+             placeholder="Specialities" 
              fullWidth/>
           )}
         />
       </div>
     );
   }
-  export default MultipleLanguageInput
+  export default AutoInterestInput

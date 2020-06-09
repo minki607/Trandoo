@@ -213,11 +213,14 @@ margin-top: 60px;
 
 .delete-btn {
   box-shadow: none;
-  border: none;
+  border: 1px solid rgba(255, 255, 255, 0.527);
+  border-radius: 2px;
   padding: 5px;
-  margin-right: 20px;
-  background-color: #d4a3a3;
-  &:focus {
+  margin-right: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+  background-color: #c06868d1;
+  &:hover {
     background-color: gray;
   }
 }
@@ -228,9 +231,11 @@ margin-top: 60px;
 }
 
 .language-title {
+  padding: 15px;
   font-family: $font-01;
   color: white;
   margin-left: 30px;
+  margin-top: 0;
 }
 /*for react-group-transition*/
 
@@ -262,4 +267,26 @@ margin-top: 60px;
 
 .MuiAutocomplete-option{
   color: gray;
+}
+
+
+.MuiChip-deleteIcon {
+  color:#c27373 !important
+}
+
+.emphasize{
+  color: white;
+  padding-bottom: 3px;
+  font-weight:bold;
+  line-height: 1.8;
+  display: inline;
+  background-image: linear-gradient(transparent 60%, #fde9f6b0 50%, #a380905c 95%, transparent 60%, transparent 90%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    animation: animatedBackground 2s cubic-bezier(0.645, 0.045, 0.355, 1) 0.5s forwards;
+ }
+ @keyframes animatedBackground {
+  to {
+      background-size: 100% 100%;
+  }
 }

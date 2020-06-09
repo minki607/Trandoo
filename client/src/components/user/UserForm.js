@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import UserDetailForm from './UserDetailForm'
 import PrefLangForm from './PrefLangForm'
 import ReviewPage from './ReviewPage'
+import AreaOfInterestForm from './AreaOfInterestForm'
 
 class UserForm extends Component {
     state = {page: 0}
@@ -21,7 +22,8 @@ class UserForm extends Component {
             <div>
                 {page === 0 && <UserDetailForm onSubmit={this.nextPage} />}
                 {page === 1 && (<PrefLangForm previousPage={this.previousPage} onSubmit={this.nextPage}/>)}
-                {page === 2 && <ReviewPage previousPage={this.previousPage}/>}
+                {page === 2 && <AreaOfInterestForm previousPage={this.previousPage} onSubmit={this.nextPage}/>}
+                {page === 3 && <ReviewPage previousPage={this.previousPage}/>}
             </div> 
         )
     }

@@ -124,10 +124,11 @@ input[type=radio]:checked + label{
 }
 
 .user_field_error {
-    background-color:#d4a3a3;
+    background-color:#988080;
     color: white;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    
 }
 
 

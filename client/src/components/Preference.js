@@ -23,7 +23,7 @@ class Preference extends React.Component{
                     <div className="page_left">
                         <div className="page_left_content scrollable">
                             <h2 className='pref_title boxHeader_title'  >
-                            Hi {this.props.auth ? this.props.auth.name : null },
+                            Hi {this.props.auth ? this.props.auth.displayName || this.props.auth.name : null },
                             </h2>
                             <p className='pref_description'>Please take a minute to tell us about yourself<br/>
                             so we can optimize the app for you!</p>

@@ -1,5 +1,6 @@
 const passport = require('passport')
 const mongoose = require('mongoose')
+const requireLogin = require('../middlewares/requireLogin')
 const User = mongoose.model('users')
 
 module.exports = app => {
@@ -11,10 +12,10 @@ module.exports = app => {
     app.get('/auth/google/callback', passport.authenticate('google', {failureRedirect: '/login'}),
         async (req,res) => {      
        
-        if (req.user.prefLanguage) {
-            res.redirect('/translate');
-          } else {
+        if (req.user.prefLanguage.length == 0) {
             res.redirect('/setPref');
+          } else {
+            res.redirect('/translate');
           }
         }
         )
@@ -40,5 +41,18 @@ module.exports = app => {
         res.send(req.user)
     })
 
-}
+    app.post('/api/current_user', requireLogin, async (req, res) => {
 
+    try {
+        req.user.displayName = req.body.displayName; 
+        req.user.prefLanguage = req.body.languages
+        req.user.specialities = req.body.specialities;
+        const user = await req.user.save();
+        res.send(user)
+    } catch (err) {
+        res.status(422).send(err)
+    }
+        
+    })
+
+}

@@ -29,7 +29,7 @@ const AutoLanguageInput = ({input, meta: {touched, error, submitFailed}}) => {
     const { onChange, ...rest } = input;
     const classes = useStyles()
 
-    
+
     return (
         <div>
             <Autocomplete

@@ -31,12 +31,11 @@ const classes = useStyles()
     return (
       <div>
         <Autocomplete
-        
           multiple
           classes={classes}
           limitTags={4}
           value={input.value || []}
-          id="multiple-limit-tags"
+          id="multiple-speciality-tags"
           options={specialities}
           onChange={(e, newValue) => {
             onChange(newValue);
@@ -47,10 +46,12 @@ const classes = useStyles()
             <TextField 
             {...params}
              variant="outlined" 
-             placeholder="Specialities" 
+             placeholder="Expertise" 
              fullWidth/>
+             
           )}
         />
+        {(touched || submitFailed) && error && <div className='error user_field_error'>{error}</div>}
       </div>
     );
   }

@@ -35,9 +35,7 @@ class Landing extends React.Component  {
         );
 
     }
-
 }
-
 function mapStateToProps(state) {
     return { auth: state.auth };
 }

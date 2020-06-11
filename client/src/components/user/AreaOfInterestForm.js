@@ -9,7 +9,7 @@ const AreaOfInterestForm = (props) => {
     return (
       <form onSubmit={handleSubmit}>
             <h4 className='form-info' style={{paddingBottom: '20px'}}>
-            Add in  areas of <span className='emphasize'>experties</span></h4>
+            Add in  areas of <span className='emphasize'>experties</span> (Optional)</h4>
                 <Field name='specialities' component={AutoInterestInput}/>
             <div>
                 <button type="button" className="previous-btn" onClick={previousPage}>

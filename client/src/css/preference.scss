@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900&display=swap");
 
 $font-01: "Raleway", sans-serif;
+$color-01: white;
 $gradient-01: linear-gradient(to top, #fff 0%, #efebed 100%);
 $animation-01: text 0.8s 0.6s ease backwards;
 
@@ -41,7 +42,7 @@ $animation-01: text 0.8s 0.6s ease backwards;
   float: right;
   width: 60%;
   height: 100vh;
-  background-color: white;
+  background-color: $color-01;
   @include sm {
     width:40%;
 }
@@ -76,6 +77,7 @@ $animation-01: text 0.8s 0.6s ease backwards;
    justify-content: space-between;
    max-width: 500px;
    margin: 0 auto;
+   margin-bottom: 30px;
    @include sm {
     display: block;
     margin: 20px;
@@ -143,7 +145,7 @@ $animation-01: text 0.8s 0.6s ease backwards;
 .form-info {
   font-family: $font-01;
   text-align: center;
-  color:white;
+  color:$color-01;
   padding: 50px;
 }
 
@@ -208,7 +210,7 @@ margin-top: 60px;
 }
 
 .add-language-btn i {
-  color: white;
+  color: $color-01;
 }
 
 .delete-btn {
@@ -227,13 +229,13 @@ margin-top: 60px;
 
 .delete-btn i {
   font-size: 15px;
-  color: white;
+  color: $color-01;
 }
 
 .language-title {
   padding: 15px;
   font-family: $font-01;
-  color: white;
+  color: $color-01;
   margin-left: 30px;
   margin-top: 0;
 }
@@ -275,7 +277,7 @@ margin-top: 60px;
 }
 
 .emphasize{
-  color: white;
+  color: $color-01;
   padding-bottom: 3px;
   font-weight:bold;
   line-height: 1.8;
@@ -289,4 +291,54 @@ margin-top: 60px;
   to {
       background-size: 100% 100%;
   }
+}
+
+.review-content{
+  font-family: $font-01;
+  margin-top :20px;
+  padding: 20px;
+}
+
+.review-title {
+  color: $color-01;
+  padding: 5px;
+  background-color: #a08e92;
+  border-radius: 5px;
+  max-width: 250px;
+  margin: 20px auto;
+}
+
+.language-content{
+  border: 1px solid gray;
+  padding: 15px;
+  max-width: 250px;
+  margin: 0 auto;
+}
+
+
+.user-form a{
+  cursor: pointer;
+}
+
+.form-values {
+ color: $color-01;
+ &-trans {
+   color: white;
+   padding: 10px;
+   margin-right: 5px;
+}
+&-spec {
+  color: white;
+   padding: 10px;
+   margin-right: 5px;
+}
+}
+
+.rotated {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    transform: rotate(90deg);
+
 }

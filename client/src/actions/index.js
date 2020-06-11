@@ -13,7 +13,6 @@ export const handleToken = (token) => async dispatch => {
 
 export const submitRequest = (values, history) => async dispatch =>{
     const res = await axios.post('/api/translate', values)
-    
     history.push('/translate')
     dispatch({type: FETCH_USER, payload: res.data})
 }
@@ -31,4 +30,11 @@ export const fetchRequest = (id) => async dispatch => {
     const res = await axios.get(`/api/translate/view/${id}`)
     dispatch({type: FETCH_SREQ, payload: res.data})
 
+}
+
+export const submitPref = (values, history) => async dispatch =>{
+  
+    const res = await axios.post('/api/current_user', values)
+    history.push('/translate')
+    dispatch({type: FETCH_USER, payload: res.data})
 }

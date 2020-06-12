@@ -47,6 +47,11 @@ module.exports = app => {
         req.user.displayName = req.body.displayName; 
         req.user.prefLanguage = req.body.languages
         req.user.specialities = req.body.specialities;
+        //only award credit for the first form fill
+        if (!req.user.creditAwarded) {
+            req.user.credits +=5;
+            req.user.creditAwarded = true;
+        }
         const user = await req.user.save();
         res.send(user)
     } catch (err) {

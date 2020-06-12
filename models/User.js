@@ -9,6 +9,10 @@ const userSchema = new Schema({
     facebookId: String,
     githubId: String,
     credits: { type: Number, default: 0},
+    creditAwarded: {
+        type: Boolean,
+        default: false
+    }, //field to check whether credits has already been awarded for filling out pref form
     prefLanguage: [{}],
     specialities: [{}]
 })

@@ -9,10 +9,23 @@ import {Line} from 'rc-progress'
 
 class TranslationList extends React.Component {
 
+    state = {
+    autoRefresh: false  
+    }
 
     componentDidMount() {
         this.props.fetchRequests()
+        this.interval = setInterval(() => {
+            if (this.state.autoRefresh) {
+                this.props.fetchRequests();
+            }
+          }, 5000);
     }
+
+    componentWillUnmount() {
+        clearInterval(this.interval);
+      }
+
     //calculate remaining day by subtracting requested date and current date 
     calcDate = (date) => {
         const today = new Date().toISOString();
@@ -32,7 +45,6 @@ class TranslationList extends React.Component {
 
     updateColor = (day) => {
         const remaining = this.calcDate(day)
-        console.log(remaining)
         if (remaining === 1) {
             return '#a00006e0'
           } else if ( remaining >=2 && remaining <=3 ) {

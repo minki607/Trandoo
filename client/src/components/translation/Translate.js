@@ -14,11 +14,14 @@ class TranslateNew extends React.Component {
         if (this.state.showReview === true){
             return <TranslateReview onCancel={()=> this.setState({showReview : false})}/>
         }
-        return <TranslateForm onFormSubmit ={() => this.setState({showReview : true})}/>
+        return (
+        <React.Fragment>
+            <TranslateForm onFormSubmit ={() => this.setState({showReview : true})}/>
+        </React.Fragment>
+        )
     }
 
     render(){
-
         return (
             <div>
                 <div className='link'>

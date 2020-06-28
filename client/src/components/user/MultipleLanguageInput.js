@@ -2,6 +2,7 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField'
 import { Autocomplete } from '@material-ui/lab'
 import { makeStyles } from "@material-ui/core/styles"
+import {languages} from '../const/LanguageArray'
 
 
 const useStyles = makeStyles(theme => ({
@@ -16,32 +17,23 @@ const useStyles = makeStyles(theme => ({
   }));
 
 const MultipleLanguageInput = ({input, meta: {touched, error, submitFailed}}) => {
-  
-    const language = [
-        {title: "KOREAN" , code:'ko'}, 
-        {title: "JAPANESE" , code: 'jp'}, 
-        {title: "CHINESE" , code: 'cn'}
-    ]
-
-
 const classes = useStyles()
 
     const { onChange } = input;
     return (
       <div>
         <Autocomplete
-        
           multiple
           classes={classes}
           limitTags={2}
           value={input.value || []}
           id="multiple-limit-tags"
-          options={language}
+          options={languages}
           onChange={(e, newValue) => {
             onChange(newValue);
           }}
-          getOptionLabel={option => option.title}
-          getOptionSelected={(option, value) => option.title === value.title}
+          getOptionLabel={option => option.name}
+          getOptionSelected={(option, value) => option.name === value.name}
           renderInput={(params) => (
             <TextField 
             {...params}

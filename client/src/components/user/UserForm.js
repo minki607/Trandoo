@@ -26,7 +26,7 @@ class UserForm extends Component {
         this.setState({page: this.state.page - 1})
     }
     render() {
-        const {onSubmit} = this.props
+
         const {page, steps} = this.state
 
         return (
@@ -66,7 +66,7 @@ function validate(values) {
             languageErrors.title = 'Please choose a main language'
             languageArrayErrors[langIndex] = languageErrors
           }
-          if (!lang || lang.translate === undefined || lang.translate.length == 0) {
+          if (!lang || lang.translate === undefined || lang.translate.length === 0) {
             languageErrors.title = 'Please select at least one language'
             languageArrayErrors[langIndex] = languageErrors
           }

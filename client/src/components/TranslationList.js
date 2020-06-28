@@ -1,33 +1,22 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom'
 import {fetchRequests} from '../actions'
 import LoadingSpinner from './LoadingSpinner'
 import {Line} from 'rc-progress'
+import { usePagination } from "@material-ui/lab/Pagination";
+import renderPagination from './Pagination'
 
 
 
-class TranslationList extends React.Component {
-
-    state = {
-    autoRefresh: false  
-    }
-
-    componentDidMount() {
-        this.props.fetchRequests()
-        this.interval = setInterval(() => {
-            if (this.state.autoRefresh) {
-                this.props.fetchRequests();
-            }
-          }, 5000);
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.interval);
-      }
+const TranslationList = (props) => {
+    
+    useEffect(() => {
+        props.fetchRequests()
+    }, [])   
 
     //calculate remaining day by subtracting requested date and current date 
-    calcDate = (date) => {
+    const calcDate = (date) => {
         const today = new Date().toISOString();
         const due = new Date(date)
         const now = new Date(today)
@@ -36,15 +25,15 @@ class TranslationList extends React.Component {
         return remaining
     } 
     //calculate percentage to show approximately how much day is remaining
-    calcPercent = (day) => {
+    const calcPercent = (day) => {
         const MAX_VALUE = 30
         const perc = day/MAX_VALUE * 100
 
         return perc
     }
 
-    updateColor = (day) => {
-        const remaining = this.calcDate(day)
+    const updateColor = (day) => {
+        const remaining = calcDate(day)
         if (remaining === 1) {
             return '#a00006e0'
           } else if ( remaining >=2 && remaining <=3 ) {
@@ -58,38 +47,62 @@ class TranslationList extends React.Component {
           } 
     }
 
-    renderRequests(){
-        return this.props.trans.data.map((req,i) => {
+    const renderRequests = () => {
+        return props.trans.data.docs && props.trans.data.docs.map((req) => {
             return (
-                <Link key={i} to = {`/translate/view/${req._id}`}>  
-                    <div key={i} className='collection col s12'>  
+                <Link key={req._id} to = {`/translate/view/${req._id}`}>  
+                    <div className='collection col s12'>  
                             <div className='card-content'>
                                 <div><span className='language'>{req.language}</span> <span className='answer'>0 answer</span></div> 
                                 <span className='card-title'>{req.title}</span>
                             </div>
-                            <div className='tag-title'>casual</div>
-                            <div className='tag-title'>fan-letter</div>
-                            <div className='tag-title'>formal</div>
-                        
-                            <Line percent={this.calcPercent(this.calcDate(req.completeIn))} 
+                            {req.tags.map(tag => {
+                                return (
+                                    <div key={tag._id} className='tag-title'>{tag.name}
+                                        <span className='tag-desc'>{tag.description}</span>
+                                    </div>
+                                    
+                                )
+                            })
+                            }
+                            <Line percent={calcPercent(calcDate(req.completeIn))} 
                             strokeWidth="1" 
-                            strokeColor={ this.updateColor(req.completeIn) }/>
+                            strokeColor={ updateColor(req.completeIn) }/>
                     </div>
                 </Link>
             )
         })
     }
 
-    render() {
         
+   const { items } = usePagination({
+        count: props.trans.data.totalPages,
+        onChange: (event,page) => handleChange(page)
+      }) 
+
+   const handleChange = (page) => {
+        props.fetchRequests(page)
+      };
+
+
         return (
             <div className='list-render'>
-                {this.props.trans.loading ? <LoadingSpinner/> : <div className='row'>
-                {this.renderRequests()}</div>}
+                {props.trans.loading ? <LoadingSpinner/> : 
+                <div className='row'>
+                <div className='col l11 s11'>
+                  {renderRequests()}
+                  </div>
+                <div className='col l1 s1'>
+                  {renderPagination(items)}
+                  </div>
+                 
+                   
+                </div>
+            }
             </div>
         )
     }
-    }    
+    
 
 function mapStateToProps({ trans }) {
     return { trans }

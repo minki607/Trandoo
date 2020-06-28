@@ -57,7 +57,7 @@ passport.use(
                     done(null, existingUser);
     
                 } else { // no user exist with current profile Id
-                    const newUser = await new User({facebookId:profile.id}).save();
+                    const newUser = await new User({facebookId:profile.id, name: profile.displayName}).save();
                     done(null, newUser);
                 }
             }
@@ -76,7 +76,7 @@ passport.use(
                  done(null, existingUser);
  
              } else { // no user exist with current profile Id
-                 const newUser = await new User({githubId:profile.id}).save();
+                 const newUser = await new User({githubId:profile.id, name: profile.username}).save();
                  done(null, newUser);
              }
          }

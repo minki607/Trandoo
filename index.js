@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const keys = require('./config/keys')
 require('./models/User')
 require('./models/Translate')
+require('./models/Tags')
 require('./service/passport')
 
 

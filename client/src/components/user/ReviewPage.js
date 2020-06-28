@@ -16,19 +16,18 @@ const ReviewPage = ({ previousPage, formValues, submitPref, history }) => {
                 formValues.languages.map(((lang, i) => {
                     return (
                     <div className='language-content' key={i}>
-                        <span className='form-values' key={i}>{lang.title}</span>
+                        <span className='form-values' key={i}>{lang.title.name}</span>
                             <div style={{marginBottom: '5px'}}>
                                 <i className="medium material-icons rotated" style={{color:'#a08e92'}}>compare_arrows</i>
                             </div>
                         {lang.translate.map((trans, idx) => {
-                            return ( <span className='form-values-trans' key={idx}>{trans.title} </span>)
+                            return ( <span className='form-values-trans' key={idx}>{trans.name} </span>)
                         })}
                     </div>
                 )
                 })
             )}
             <h6 className='review-title'>Expertise</h6>
-            {console.log(formValues)}
             {
                 formValues.specialities? (
                     formValues.specialities.map((spec, i)=> {

@@ -1,27 +1,20 @@
-import { FETCH_REQ, FETCH_SREQ, FETCH_QUERY, LOADER_ON, LOADER_OFF } from '../actions/types'
+import { POST_TAG, FETCH_TAG, LOADER_ON, LOADER_OFF } from '../actions/types'
 
 const initialState = {
     data: [],
-    single: [],
-    query: [],
     loading: false
 }
 export default function(state = initialState, action){
     switch (action.type){
-        case FETCH_REQ:
+        case POST_TAG:
             return {
                 ...state,
                 data: action.payload
             }
-        case FETCH_SREQ: 
+        case FETCH_TAG: 
             return {
                 ...state,
-                single: action.payload
-            }    
-        case FETCH_QUERY:
-            return{
-                ...state,
-                query: action.payload
+                data: action.payload
             }    
         case LOADER_ON:
             return {

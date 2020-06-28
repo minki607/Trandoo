@@ -1,30 +1,132 @@
+.react-tags {
+  font-family: 'Raleway', sans-serif;
+  position: relative;
+  padding: 6px 0 0 6px;
+  border-radius: 1px;
 
-.tag {
+  /* shared font styles */
+  font-size: 1em;
+  line-height: 1.2;
 
-  border-radius: 4px;
-  background: #ccc2c7;
-  float: left;
-  margin: 5px 5px;
-  padding: 4px;
+  /* clicking anywhere will focus the input */
+  cursor: text;
+}
+.react-tags.is-focused {
+  border-color: #B1B1B1;
+}
 
-  & i {
-    cursor: pointer;
+.react-tags__selected {
+  display: block;
+}
+
+.react-tags__selected-tag {
+  font-family: inherit;
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0 6px 6px 0;
+  padding: 6px 8px;
+  border: 1px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  position: relative;
+  background: #cdc2c7;
+
+  /* match the font styles */
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.react-tags__selected-tag:after {
+  content: '\2715';
+  color: #AAA;
+  margin-left: 8px;
+}
+
+.react-tags__selected-tag:hover,
+.react-tags__selected-tag:focus {
+  border-color: #B1B1B1;
+}
+
+.react-tags__search {
+  display: inline-block;
+
+  /* match tag layout */
+  padding: 7px 2px;
+  margin-bottom: 6px;
+  min-width: 100%;
+}
+
+@media screen and (min-width: 30em) {
+
+  .react-tags__search {
+    /* this will become the offsetParent for suggestions */
+    position: relative;
   }
 
-  & span {
-    font-family: Raleway,Helvetica,sans-serif;
-    padding: 5px 5px;
-    font-size: 1em;
-    color: white;
-    font-weight: 600;
+}
+
+.react-tags__search-input {
+  margin: 0;
+  border: 1px solid rgb(205, 194, 199) !important;
+  padding: 5px !important;
+  border-radius: 10px !important;
+  background-color: rgb(255, 253, 253) !important;
+  outline: none;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  min-width: 100%;
+  text-align: center;
+}
+
+.react-tags__search-input::-ms-clear {
+  display: none;
+}
 
 
+@media screen and (min-width: 30em) {
+
+  .react-tags__suggestions {
+    max-width: 500px;
+    margin: 0 auto;
   }
+
 }
 
 
 
-.tag-icon {
-  font-size: 1em;
-  color: white;
+.react-tags__suggestions li {
+
+  width: 100% !important;
+  padding: 30px;
+  border-bottom: 1px solid rgb(231, 231, 231);
+ 
+}
+
+.react-tags__suggestions li mark {
+  text-decoration: underline;
+  background: none;
+  font-weight: 600;
+}
+
+.react-tags__suggestions li:hover {
+  cursor: pointer;
+  background: #eee;
+}
+
+.react-tags__suggestions li.is-active {
+  background: #b7cfe0;
+}
+
+.react-tags__suggestions li.is-disabled {
+  opacity: 0.5;
+  cursor: auto;
+}
+
+.item-name {
+  background-color: #cdc2c7;
+  max-width: 150px;
+  margin: 0 auto;
+ margin-bottom: 10px;
+ border-radius: 5px;
+ padding: 3px;
 }

@@ -1,6 +1,6 @@
     import _ from 'lodash';
     import React from "react";
-    import {reduxForm, Field, FieldArray } from "redux-form";
+    import {reduxForm, Field } from "redux-form";
     import TranslateField from "./TranslateField";
     import TranslationOption from "./TranslationOption";
     import TranslationDate from "./TranslationDate";
@@ -14,7 +14,7 @@
         {label: 'Language', name:'language', error:'Select a Language'},
         {label: 'Complete in', name:'completeIn', error:'Select a Date'},
         {label: 'Body', name:'body', error: 'Provide a Body'},
-        {label: 'Tags', name:'tags'}
+        {label: 'Categories', name:'tags'}
     ]
 
     class TranslateForm extends React.Component {
@@ -35,7 +35,7 @@
                     case 'body':
                         return <Field key={name}  component={TranslationBody} type='text' label={label} name={name}/>
                     case 'tags':
-                        return <FieldArray key={name} component={TranslationTag} type='text' label={label} name={name}/>
+                        return <Field key={name} component={TranslationTag} type='text' label={label} name={name}/>
                     default:
                         return <Field key={name}  component={TranslateField} type='text' label={label} name={name}/>
                 }
@@ -53,7 +53,6 @@
                     <form onSubmit={this.props.handleSubmit(this.props.onFormSubmit) }>
                         <div className='row fields'>
                             {this.renderFields()}
-                        
                         </div>
                         <button type='submit' className='btn-flat white-text right'>
                             Next

@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import ReactHtmlParser from 'react-html-parser' // to render html tags 
 import {withRouter} from 'react-router-dom' // get access to history object's properties 
-import * as actions from '../../actions';
+import * as actions from '../../actions'
 
 const TranslateReview = ({onCancel, formValues, submitRequest, history}) => {
     return (
@@ -31,14 +31,17 @@ const TranslateReview = ({onCancel, formValues, submitRequest, history}) => {
      
             <div className='confirm-block section col s12 m4 l4'>
                 <h3>Tags</h3>
-                <p>{formValues.tags}</p>
+                <div>{formValues.tags.map((tag, i) => {
+                        return (<div key={i}>{tag.name}</div>)
+                    })}
+                </div>
                 <div className='divider'/> 
             </div>
             </div>
             
             <div className='confirm-block section'>
                 <h3>Body</h3>
-                <p>{ReactHtmlParser(formValues.body)}</p>
+                {ReactHtmlParser(formValues.body)}
                 <div className='divider'/> 
             </div>
 

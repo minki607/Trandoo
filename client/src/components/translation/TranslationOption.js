@@ -8,6 +8,7 @@ export default ({ input, label, children, meta: {error, touched}}) => {
             <label>{label}</label>
             <br/>
             <Select
+            
                 disableUnderline
                 {...input}
                 children={children}/>        

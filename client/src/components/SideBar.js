@@ -9,7 +9,7 @@ export default function SideBar(props) {
   const menuPaths = [
     {
       name: 'Dashboad',
-      path: '/',
+      path: '/translate',
       icon: 'dashboard'
     },
     {
@@ -33,7 +33,7 @@ export default function SideBar(props) {
          className="toggle-sidenav"
          onClick={() => setSlider(s => !s)}>
         <div className='menu-icons'>
-            <i className="material-icons">{size.width > 1300 ? 'featured_video' : 'menu'}</i>
+            <i className="material-icons">{size.width >= 2000 ? 'featured_video' : 'menu'}</i>
             {/*<i className="material-icons">notifications_none</i> */}
         </div>    
       </a>
@@ -51,7 +51,7 @@ export default function SideBar(props) {
         id="slide-out"
         className="sidenav"
         style={{  
-          transform: slider || size.width >= 1300 ? "translateX(0%)" : "",
+          transform: slider || size.width >= 2000 ? "translateX(0%)" : "",
           transitionProperty: "transform",
           transitionDuration: ".25s"
         }}

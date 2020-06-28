@@ -26,7 +26,8 @@ class Preference extends React.Component{
                             Hi {this.props.auth ? this.props.auth.displayName || this.props.auth.name : null },
                             </h2>
                             <p className='pref_description'>Please take a minute to tell us about yourself<br/>
-                            so we can optimize the app for you!</p>
+                            so we can optimize the app for you.<br/>Start now and claim <span style={{color:'#cda8a8'}}><strong>5 credits</strong></span></p>
+
                             <div className='pref_button'>   
                                     <button disabled={this.props.auth ? false : true} id="start-btn" className="header-btn" onClick={this.renderForm}>
                                         Start</button>
@@ -35,6 +36,7 @@ class Preference extends React.Component{
                                     </Link>
                             </div>
                                 <CSSTransition in={this.state.showForm} 
+                                
                                 timeout={500} 
                                 classNames='form-transition'
                                 unmountOnExit

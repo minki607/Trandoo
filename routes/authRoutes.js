@@ -23,14 +23,22 @@ module.exports = app => {
     app.get('/auth/facebook', passport.authenticate('facebook'))    
     app.get('/auth/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/login'}), 
         (req,res) => {
-            res.redirect('/translate')
+            if (req.user.prefLanguage.length == 0) {
+                res.redirect('/setPref');
+              } else {
+                res.redirect('/translate');
+              }
         }
     )
 
-    app.get('/auth/github', passport.authenticate('github'))
+    app.get('/auth/github', passport.authenticate('github'  ))
     app.get('/auth/github/callback', passport.authenticate('github', { failureRedirect: '/' }),
         (req, res) => {
-    res.redirect('/translate');
+            if (req.user.prefLanguage.length == 0) {
+                res.redirect('/setPref');
+              } else {
+                res.redirect('/translate');
+              }
   });
 
     app.get('/api/logout', (req,res) => {

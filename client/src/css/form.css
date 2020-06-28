@@ -176,6 +176,8 @@ input[type=radio]:checked + label{
     margin: 40px;
 }
 
+
+
 .section-description {
     margin: 40px 0 10px 50px;
     text-align: left;
@@ -209,3 +211,25 @@ input[type=radio]:checked + label{
 .back-icon:hover {
     color: #cdc2c7;
 }
+
+button:focus {
+    background-color: transparent;
+}
+
+@media only screen and (max-width: 400px) {
+    .section-description{
+        text-align: center;
+        margin: 0;
+    }
+    .sub-title {
+
+        margin: 15px auto;
+    }
+    .fields{
+        margin: 25px;
+    }
+  }
+
+  
+
+  

@@ -1,52 +1,51 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from "react";
+import axios from 'axios'
+import ReactTags from "react-tag-autocomplete";
 import '../../css/tags.scss'
-export default ({input  , label, meta: {error, touched}}) => {
-    const [tags, setTags] = useState([])
 
-    const addTags = event => {
-        const {value} = event.target //destructuring
-        if (event.key === ' '
-            && value.replace(/\s/g, '').length // disallow user to type in tags consisting of spaces only
-            && !(tags.includes(value)) //tag is already added
-        ) {
-            setTags([...tags, value])
-            event.target.value = ''
+function SuggestionComponent({ item, query }) {
+  
 
-        } else if (tags.includes(value)) //if tag already exist clear value
-            event.target.value = ''
-
-    }
-
-    const removeTag = indexRemove => {
-        setTags(tags.filter((_,index) => index !== indexRemove ))
-    }
-
-    return (
-        <div className='col s12'>
-            <label>{label}</label>
-            <br/>
-            <div className='tagHere'>
-                <input {...input} placeholder='Separate tags by space (Max 3)'
-                       style={{marginBottom: '5px'}}
-                       onKeyUp={addTags}
-                       disabled={tags.length >= 3 ? true : false }
-                />
-
-                {
-                    tags.map((tag, index) => {
-                        return (
-                            <div key={index} className='tag'>
-                                <span>{tag}</span>
-                                <i onClick={() => removeTag(index)} className='material-icons tag-icon'>close</i>
-                            </div>
-                        )
-                    })
-                }
-
-            </div>
-            <div className='red-text' style={{marginBottom: '20px'}}>
-                {touched && error}
-            </div>
-        </div>
-    )
+  return (
+    <div id={item.id}>
+      <div className='item-name'>{item.name}</div> <div>{item.description}</div>
+    </div>
+  );
 }
+const TranslationTag = ({ label, input: { value, onChange } }) => {
+
+    const [suggestions, setList] = useState([])
+
+    useEffect(() => {
+      axios.get(`/api/tags`).then(res => {
+          setList(res.data)
+      })
+  }, [])
+
+  const newValue = !value ? [] : value;
+
+  const handleDelete = i => {
+    const tags = [...newValue];
+    tags.splice(i, 1);
+    onChange(tags);
+  };
+
+  const handleAdd = e => {
+    onChange([...newValue, e]);
+  };
+
+  return (
+      <div className='col s12'>
+       <label>{label}</label>
+        <ReactTags
+        suggestionComponent={SuggestionComponent}
+        tags={newValue}
+        suggestions={suggestions}
+        onDelete={handleDelete}
+        onAddition={handleAdd}
+        />
+    </div>
+  );
+};
+
+export default TranslationTag;

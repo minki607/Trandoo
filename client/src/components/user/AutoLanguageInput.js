@@ -2,6 +2,7 @@ import React from 'react'
 import TextField from '@material-ui/core/TextField'
 import { Autocomplete } from '@material-ui/lab'
 import { makeStyles } from "@material-ui/core/styles"
+import {languages} from '../const/LanguageArray'
 
 const useStyles = makeStyles(theme => ({
 
@@ -16,33 +17,23 @@ inputRoot: {
 
 const AutoLanguageInput = ({input, meta: {touched, error, submitFailed}}) => {
     
-    
-    const language = [
-        {title: "KOREAN" , code:'ko'}, 
-        {title: "JAPANESE" , code: 'jp'}, 
-        {title: "CHINESE" , code: 'cn'}
-    ]
-
-    const getSelectedOption = () => {
-        return language.find(o => o.title === input.value);
-      };
-    const { onChange, ...rest } = input;
+    const { onChange } = input;
     const classes = useStyles()
-
-
     return (
         <div>
             <Autocomplete
             autoSelect
             classes={classes}   
-            value={getSelectedOption()}
-            options={language}
+            value={input.value}
+            options={languages}
             autoHighlight
-            getOptionLabel={option => option.title}
-            onChange={(event, newValue) => onChange(newValue)}
+            getOptionLabel={option => option.name}
+            onChange={(e, newValue) => {
+                onChange(newValue);
+              }}
             getOptionSelected={(option, value) => {
                 if (value) {
-                    return option.title === value.title || option.title === input.value;
+                    return option.name === value.name || option.name === input.value;
                 }
            
               }}
@@ -50,11 +41,10 @@ const AutoLanguageInput = ({input, meta: {touched, error, submitFailed}}) => {
                 <TextField 
                 placeholder="Main Language"
                 {...params}
-                {...rest}
-                value={input.value}
                 variant="outlined" 
                 fullWidth />
             )}
+            
             />
            {(submitFailed) && error && <div className='error user_field_error'>{error}</div>}
         </div>

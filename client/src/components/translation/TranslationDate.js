@@ -29,8 +29,8 @@ export default ({input, label, type, meta: {error, touched}}) => {
         }
 
     return (
-        <div className='col s12 l6'>
-            <label>{label}</label>
+        <div className='col s12'>
+            <label style={{float: 'none'}}>{label}</label>
             <br/>
                  {renderField()}
     

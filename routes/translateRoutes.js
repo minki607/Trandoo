@@ -40,8 +40,17 @@ module.exports = app => {
                 page: parseInt(page, 10) || 1,
                 limit: parseInt(perPage, 10) || 20 ,
             }
-            const result = await Translate.paginate({'$or':[{title:new RegExp(req.params.query,'i')},{body:new RegExp(req.params.query,'i')}]}, options)
-            res.send(result)
+            
+            var tagQuery = req.params.query.match(/\[(.*?)\]/);
+            if (tagQuery) {
+                var tagValue = tagQuery[1];
+                const tagResult = await Translate.paginate({tags: {$elemMatch: {name: tagValue}}})
+                res.send(tagResult)
+            } else {
+                const result = await Translate.paginate({'$or':[{title:new RegExp(req.params.query,'i')},{body:new RegExp(req.params.query,'i')}]}, options)
+                res.send(result)
+            }
+    
         } catch (err) {
             return res.status(500).send(err)
         }
@@ -50,18 +59,42 @@ module.exports = app => {
        
     })
 
+    app.get('/api/translate/today', async (req,res) => {
+       
+        var start = new Date();
+        start.setHours(0,0,0,0);
+
+        var end = new Date();
+        end.setHours(23,59,59,999);
+
+        try {
+            const {page, perPage} = req.query
+            const options = {
+                page: parseInt(page, 10) || 1,
+                limit: parseInt(perPage, 10) || 20 ,
+            }
+            const todayList = await Translate.paginate({dateSent: {$gte: start, $lt: end}}, options)
+            res.send(todayList)
+        } catch (err) {
+            return res.status(500).send(err)
+        }
+        
+       
+    })
+
     app.post('/api/translate', requireLogin, async (req, res) => {
-        const {title, language, completeIn, body, tags} = req.body
-    
+        const {title, originalLanguage, targetLanguage, completeIn, body, tags} = req.body
+       
         const translation = new Translate({
             title,
             body,
-            language,
+            originalLanguage,
+            targetLanguage,
             completeIn,
             tags,
             dateSent: Date.now()
         })
-        
+
         try {
             await translation.save()
             //req.user.credits -=1; 

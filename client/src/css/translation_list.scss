@@ -7,6 +7,30 @@
     
   }
 
+  @mixin lg {
+    @media screen and (max-width: 1700px) {
+       @content;
+    }
+  }
+  
+  @mixin sm {
+      @media screen and (max-width: 830px) {
+         @content;
+      }
+    }
+  
+    @mixin ssm {
+      @media screen and (max-width: 600px) {
+         @content;
+      }
+    }  
+  
+    @mixin xsm {
+      @media screen and (max-width: 450px) {
+         @content;
+      }
+    }
+
 .material-icons {
 color: #505050ad;
 }
@@ -16,6 +40,21 @@ color: #505050ad;
     font-family: 'Raleway', Helvetica, sans-serif !important;
     letter-spacing: 0.09rem
 }
+
+.collection .overlay {
+    position:absolute;
+    left:0; top:0; bottom:0; right:0;
+}
+
+.collection .inner {
+    position:relative;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .collection .inner a, .collection .inner .percentage{
+    pointer-events: all;
+  }
 
 .img-container {
     margin-top: 50px;
@@ -43,17 +82,70 @@ color: #505050ad;
        transform: translateY(-5px);
 }
 
+
 .card-content {
-    margin-top: 20px;
+    font-size: 12px;
+}
+
+.card-title {
+    max-width: 250px;
+}
+
+.posted-date {
+    margin-top: 15px;
+    font-size: 8px;
+    color: gray;
+}
+.card-content {
+  display: flex;
+  justify-content: space-between;  
+  margin-top: 10px;
+  @include ssm {
+    font-size:10px;
+    padding: 10px;
+}
+
+}
+
+.original {
+    margin: 3px;
+    @include ssm {
+        display:block;
+    }
+}
+
+.target{
+    margin: 3px;
+    @include ssm {
+        display:block;
+    }
 }
 
 .answer {
     font-size: 10px;
-    float:right;
+    background-color: #cdc2c73b;
+    height: 10px;
+    border-top: 1px solid #cdc2c7;
+  
+    
 }
+
+.answer-count {
+    @include ssm {
+        display:block;
+    }
+}
+
+.answer-text {
+    @include ssm {
+        display:block;
+    }
+}
+
+
 .language {
     font-size: 10px;
-    float:left;
+   
 }
 
 .tag-title {
@@ -180,4 +272,11 @@ color: #505050ad;
 .MuiPagination-root {
     background-color: transparent;
     text-align: center;
+}
+
+//creating content and hiding it so div takes width and height (for referencing)
+.reference:after
+{
+    content: '.';
+    visibility: hidden;
 }

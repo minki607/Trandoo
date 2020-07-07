@@ -1,10 +1,11 @@
-import { FETCH_REQ, FETCH_SREQ, FETCH_QUERY, LOADER_ON, LOADER_OFF } from '../actions/types'
+import { FETCH_REQ, FETCH_SREQ, FETCH_QUERY, LOADER_ON, LOADER_OFF, FETCH_TODAY } from '../actions/types'
 
 const initialState = {
-    data: [],
-    single: [],
-    query: [],
-    loading: false
+    data: [], //multiple requests
+    single: [], //single request 
+    query: [], //for search query request
+    today: [], //for request posted today
+    loading: false //fetch data status
 }
 export default function(state = initialState, action){
     switch (action.type){
@@ -23,6 +24,12 @@ export default function(state = initialState, action){
                 ...state,
                 query: action.payload
             }    
+        case FETCH_TODAY:
+            return{
+                ...state,
+                today: action.payload
+            }    
+
         case LOADER_ON:
             return {
                 ...state,

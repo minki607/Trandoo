@@ -3,10 +3,10 @@ import {connect} from 'react-redux'
 import {reduxForm, Field, formValueSelector } from "redux-form";
 import {submitSearch} from '../actions'
 import LoadingSpinner from './LoadingSpinner'
-import {Link} from 'react-router-dom'
 import '../css/search.scss'
 import { usePagination } from "@material-ui/lab/Pagination";
 import renderPagination from './Pagination'
+import renderPosts from './renderPosts';
 
 
 const SearchInput = ({input}) => {
@@ -25,7 +25,6 @@ let SearchComponent = ({trans, submitSearch, searchValue}) => {
        submitSearch(searchValue)
        setQuery(searchValue)
        isSubmitted(true)
-       console.log(trans)
     } 
 
     const renderResults = () => {
@@ -33,26 +32,8 @@ let SearchComponent = ({trans, submitSearch, searchValue}) => {
       
         trans.loading ? <LoadingSpinner/> : trans.query.docs && trans.query.docs.map(post => {
           return (
-            <Link key={post._id} to = {`/translate/view/${post._id}`}>  
-            <div className='collection col s12'>  
-                    <div className='card-content'>
-                        <div><span className='language'>{post.language}</span> <span className='answer'>0 answer</span></div> 
-                        <span className='card-title'>{post.title}</span>
-                    </div>
-
-                    {post.tags.map(tag => {
-                        return (
-                            <div key={tag._id} className='tag-title'>{tag.name}
-                                <span className='tag-desc'>{tag.description}</span>
-                            </div>
-                        )
-                    })
-                    }
-            </div>
-        </Link>
+            renderPosts(post)
           )
-          
-          
       }
       )
       
@@ -66,6 +47,7 @@ let SearchComponent = ({trans, submitSearch, searchValue}) => {
 
 const handleChange = (page) => {
     submitSearch(searchValue, page)
+    console.log(trans)
   };
 
   const NotFound = () => {
@@ -90,11 +72,12 @@ const handleChange = (page) => {
           {(trans.query.docs && !trans.query.docs.length && submitted && !trans.loading) 
           ? NotFound(searchValue) 
           : <div className='row'>
-                <div className='col l11 s11'>
+                <div className={`col ${ trans.query.hasNextPage ? 's11' : 's12'}`}>
+                  {trans.query.docs && !trans.loading ?<p className='total-docs'> {trans.query.totalDocs + ' results'}</p> : null}
                     {renderResults()}
-                </div>   
-                {submitted && !trans.loading? 
-                <div className='col l1 s1'>
+                </div>    
+                {!trans.loading && trans.query.docs && trans.query.hasNextPage?  
+                <div className='col s1'>
                   {renderPagination(items)}
                 </div>
                 : null} 

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {FETCH_USER, FETCH_REQ, FETCH_SREQ, LOADER_ON, LOADER_OFF, POST_TAG, FETCH_TAG, FETCH_QUERY} from "./types";
+import {FETCH_USER, FETCH_REQ, FETCH_SREQ, LOADER_ON, LOADER_OFF, POST_TAG, FETCH_TAG, FETCH_QUERY, FETCH_TAGPOST, FETCH_TODAY} from "./types";
 
 export const fetchUser = () => async (dispatch) => {
         const res = await axios.get('/api/current_user')
@@ -19,7 +19,6 @@ export const submitRequest = (values, history) => async dispatch =>{
 
 export const fetchRequests = (page = 1) => async dispatch => {
 
-    
     dispatch({type: LOADER_ON})
     const res = await axios.get(`/api/translate?page=${page}`)
     dispatch({type: FETCH_REQ, payload: res.data})
@@ -61,5 +60,21 @@ export const fetchTags = () => async dispatch => {
     dispatch({type: LOADER_ON})
     const res = await axios.get('/api/tags')
     dispatch({type: FETCH_TAG, payload: res.data})
+    dispatch({type: LOADER_OFF})
+}
+
+export const fetchTagPosts = (name) => async dispatch => {
+
+        dispatch({type: LOADER_ON})
+        const res = await axios.get(`/api/tagpost/${name}`)
+        dispatch({type: FETCH_TAGPOST, payload: res.data})
+        dispatch({type: LOADER_OFF})
+    
+}
+
+export const fetchTodayList = (page = 1) => async dispatch =>  {
+    dispatch({type: LOADER_ON})
+    const res = await axios.get(`/api/translate/today?page=${page}`)
+    dispatch({type: FETCH_TODAY, payload: res.data})
     dispatch({type: LOADER_OFF})
 }

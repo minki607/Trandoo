@@ -8,8 +8,6 @@ class Login extends React.Component{
             <Fragment>
                 <div className="login-page">
                 <div className="login-box">
-                    
-
                     <div className='content'>
                         <p className="login-title">Login | Sign Up</p>
                         <div className="social-media">

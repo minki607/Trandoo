@@ -357,10 +357,13 @@ margin-top: 60px;
 
 .setPref-container{
 min-height: 300px;
+width: 80%;
+margin: 0 auto;
 background-color: #e5e5e5;
 display: flex;
 justify-content: space-between;
 align-items: center;
+
 @include ssm {
   display: flex;
   align-items: center;

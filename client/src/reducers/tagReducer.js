@@ -1,7 +1,8 @@
-import { POST_TAG, FETCH_TAG, LOADER_ON, LOADER_OFF } from '../actions/types'
+import { POST_TAG, FETCH_TAG, LOADER_ON, LOADER_OFF, FETCH_TAGPOST } from '../actions/types'
 
 const initialState = {
     data: [],
+    tagpost : [],
     loading: false
 }
 export default function(state = initialState, action){
@@ -15,6 +16,11 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 data: action.payload
+            }    
+        case FETCH_TAGPOST: 
+            return {
+                ...state,
+                tagpost: action.payload
             }    
         case LOADER_ON:
             return {

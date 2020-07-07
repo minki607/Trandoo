@@ -2,34 +2,37 @@
     import React from "react";
     import {reduxForm, Field } from "redux-form";
     import TranslateField from "./TranslateField";
-    import TranslationOption from "./TranslationOption";
     import TranslationDate from "./TranslationDate";
     import TranslationBody from "./TranslationBody";
     import TranslationTag from "./TranslationTag";
-    import {Link} from "react-router-dom";
-    import { MenuItem} from '@material-ui/core';
+    import AutoLanguageInput from "../user/AutoLanguageInput"
     
+
     const FIELDS = [
         {label: 'Title', name:'title', error:'Provide a Title'},
-        {label: 'Language', name:'language', error:'Select a Language'},
+        {label: 'Original Language', name:'originalLanguage', placeholder:'Original', error:'Select current language'},
+        {label: 'Target Language', name:'targetLanguage', placeholder:'Target', error:'Select the target Language'},
         {label: 'Complete in', name:'completeIn', error:'Select a Date'},
         {label: 'Body', name:'body', error: 'Provide a Body'},
-        {label: 'Categories', name:'tags'}
+        {label: 'Categories (Optional)', name:'tags'}
     ]
 
     class TranslateForm extends React.Component {
-
+        
+      
         renderFields() {
             return ( 
-                _.map(FIELDS, ({name, label}) => {
+                _.map(FIELDS, ({name, label, placeholder}) => {
                 switch (name) {
-                    case 'language':
+                    case 'originalLanguage':
                         return(
-                        <Field key={name} component={TranslationOption} label={label} name={name}>
-                            <MenuItem value={'KOR-ENG'}>KOR-ENG</MenuItem>
-                            <MenuItem value={'ENG-KOR'}>ENG-KOR</MenuItem>
-                        </Field>
+                        <Field key={name} component={AutoLanguageInput} placeholder={placeholder} label={label} name={name} forReq={true}/>
                         )
+                    case 'targetLanguage':
+                        return(
+                        <Field key={name} component={AutoLanguageInput} placeholder={placeholder} label={label} name={name} forReq={true}/>
+                        )
+                        
                     case 'completeIn':
                         return <Field key={name} type='radio' component={TranslationDate} label={label} name={name}/>
                     case 'body':
@@ -57,9 +60,7 @@
                         <button type='submit' className='btn-flat white-text right'>
                             Next
                         </button>
-                        <Link to='/translate' className='btn-flat white-text right'>
-                            Cancel
-                        </Link>
+
                     </form>
                 </div>
 
@@ -74,6 +75,11 @@
                 errors[name] = error
             }
         })
+
+       if (values['originalLanguage'] === values['targetLanguage']) {
+           errors['originalLanguage'] = 'Change one of the following'
+           errors['targetLanguage'] = 'Change one of the following'
+       }
         return errors;
     }
 

@@ -11,7 +11,7 @@ h2 {
 
 input:focus {
     border-bottom: 1px solid #ccc2c7 !important;
-    box-shadow: 0 1px 0 0 #ccc2c7 !important;
+    box-shadow: 0 1px 0 0 #ccc2c7 !important; 
 }
 
 
@@ -201,6 +201,7 @@ input[type=radio]:checked + label{
 .back-icon {
     font-family: 'Raleway';
     padding: 20px;
+    cursor: pointer;
 }
 
 .back-icon i {

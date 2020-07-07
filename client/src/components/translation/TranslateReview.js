@@ -17,7 +17,9 @@ const TranslateReview = ({onCancel, formValues, submitRequest, history}) => {
             <div className='row'>
             <div className='confirm-block section col s12 m4 l4'>
                 <h3> Language </h3>
-                <p>{formValues.language}</p>
+                <span><p>{formValues.originalLanguage.name}</p>
+                    <i className="medium material-icons">compare_arrows</i> 
+                <p>{formValues.targetLanguage.name}</p></span>
                 <div className='divider'/> 
             </div>
 
@@ -31,10 +33,15 @@ const TranslateReview = ({onCancel, formValues, submitRequest, history}) => {
      
             <div className='confirm-block section col s12 m4 l4'>
                 <h3>Tags</h3>
-                <div>{formValues.tags.map((tag, i) => {
-                        return (<div key={i}>{tag.name}</div>)
-                    })}
-                </div>
+                {/*display tags if there is tags to be displayed*/}
+                {formValues.tags 
+                ? 
+                    <div>{formValues.tags.map((tag, i) => {
+                            return (<div key={i}>{tag.name}</div>) 
+                        })}
+                    </div> 
+                : null}
+        
                 <div className='divider'/> 
             </div>
             </div>

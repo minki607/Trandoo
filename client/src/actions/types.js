@@ -6,3 +6,5 @@ export const LOADER_OFF = 'loader_off';
 export const POST_TAG = 'post_tag';
 export const FETCH_TAG = 'fetch_tag';
 export const FETCH_QUERY = 'fetch_query';
+export const FETCH_TAGPOST = 'fetch_tagpost';
+export const FETCH_TODAY = 'fetch_Today';

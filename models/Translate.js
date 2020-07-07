@@ -4,7 +4,8 @@ const mongoosePaginate = require('mongoose-paginate-v2');
 
 const transSchema = new Schema({
     title: String,
-    language: String,
+    originalLanguage: {},
+    targetLanguage: {},
     completeIn: Date,
     body: String,
     _user: {type: Schema.Types.ObjectId, ref: 'User'},

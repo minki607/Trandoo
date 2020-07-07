@@ -16,7 +16,7 @@ const useStyles = makeStyles(theme => ({
     }
   }));
 
-const MultipleLanguageInput = ({input, meta: {touched, error, submitFailed}}) => {
+const MultipleLanguageInput = ({input, placeholder, meta: {touched, error, submitFailed}}) => {
 const classes = useStyles()
 
     const { onChange } = input;
@@ -38,7 +38,7 @@ const classes = useStyles()
             <TextField 
             {...params}
              variant="outlined" 
-             placeholder="Translatable Language(s)" 
+             placeholder={placeholder}
              fullWidth/>
           )}
         />

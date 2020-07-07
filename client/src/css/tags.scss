@@ -16,7 +16,8 @@
 }
 
 .react-tags__selected {
-  display: block;
+  display: inline-block;
+  margin-top: 15px;
 }
 
 .react-tags__selected-tag {
@@ -129,4 +130,25 @@
  margin-bottom: 10px;
  border-radius: 5px;
  padding: 3px;
+}
+
+
+//show tag component
+
+
+.tag-page { 
+  min-height: 100vh;
+  background-image: linear-gradient(to top, #fff 0%, #efebed 100%);
+}
+
+.tag-name-card {
+  height: 300px;
+  width: 50%;
+  background-color: pink;
+}
+
+.tag-post {
+  height: 300px;
+  width: 50%;
+  background-color: gray;
 }

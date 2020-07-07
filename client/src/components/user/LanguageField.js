@@ -25,12 +25,14 @@ const LanguageField = ({ fields, meta: { touched, error, submitFailed }}) => {
                                 name={`${language}.title`}
                                 type="text"
                                 component={AutoLanguageInput}
+                                placeholder='Main Language'
                                 label="Language"
                                 />
                                 <Field 
                                 name={`${language}.translate`}
                                 type="text"
                                 component={MultipleLanguageInput}
+                                placeholder="Translatable Language(s)"
                                 />
                             </div>
                     </li>

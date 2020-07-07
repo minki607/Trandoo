@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import TextField from '@material-ui/core/TextField'
 import { Autocomplete } from '@material-ui/lab'
 import { makeStyles } from "@material-ui/core/styles"
 import {languages} from '../const/LanguageArray'
+
 
 const useStyles = makeStyles(theme => ({
 
@@ -15,16 +16,18 @@ inputRoot: {
   }
 }));
 
-const AutoLanguageInput = ({input, meta: {touched, error, submitFailed}}) => {
+const AutoLanguageInput = ({forReq = false, placeholder, input, label, meta: { error, submitFailed}}) => {
     
-    const { onChange } = input;
+    const [state] = useState({name: ''}) 
+    const { value, onChange } = input;
     const classes = useStyles()
     return (
-        <div>
+        <div className={`${ forReq ? 'col l6 m6 s12' : ''}`}>
+            {forReq ? <label>{label}</label> :null}
             <Autocomplete
             autoSelect
             classes={classes}   
-            value={input.value}
+            value={value ? value : state }
             options={languages}
             autoHighlight
             getOptionLabel={option => option.name}
@@ -39,7 +42,7 @@ const AutoLanguageInput = ({input, meta: {touched, error, submitFailed}}) => {
               }}
             renderInput={params => (
                 <TextField 
-                placeholder="Main Language"
+                placeholder={placeholder}
                 {...params}
                 variant="outlined" 
                 fullWidth />

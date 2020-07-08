@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios'
 import TextField from '@material-ui/core/TextField'
 import { Autocomplete } from '@material-ui/lab'
 import { makeStyles } from "@material-ui/core/styles"
@@ -18,11 +19,13 @@ const useStyles = makeStyles(theme => ({
 
 const AutoInterestInput = ({input, meta: {touched, error, submitFailed}}) => {
   
-    const specialities = [
-        {title: "BUSINESS" }, 
-        {title: "IT"}, 
-        {title: "SLANG"}
-    ]
+  const [suggestions, setList] = useState([])
+
+  useEffect(() => {
+    axios.get(`/api/tags`).then(res => {
+        setList(res.data)
+    })
+}, [])
 
 
 const classes = useStyles()
@@ -36,12 +39,12 @@ const classes = useStyles()
           limitTags={4}
           value={input.value || []}
           id="multiple-speciality-tags"
-          options={specialities}
+          options={suggestions}
           onChange={(e, newValue) => {
             onChange(newValue);
           }}
-          getOptionLabel={option => option.title}
-          getOptionSelected={(option, value) => option.title === value.title}
+          getOptionLabel={option => option.name}
+          getOptionSelected={(option, value) => option.name === value.name}
           renderInput={(params) => (
             <TextField 
             {...params}

@@ -40,12 +40,40 @@ module.exports = app => {
                 page: parseInt(page, 10) || 1,
                 limit: parseInt(perPage, 10) || 20 ,
             }
-            
+    
             var tagQuery = req.params.query.match(/\[(.*?)\]/);
+            var languageRegex = /\s*->\s*/
+            //check if query contains []. if it does, do a tag regex search
             if (tagQuery) {
                 var tagValue = tagQuery[1];
-                const tagResult = await Translate.paginate({tags: {$elemMatch: {name: tagValue}}})
+                const tagResult = await Translate.paginate({tags: {$elemMatch: {name: { $regex: tagValue, $options:"$i" }}}})
                 res.send(tagResult)
+            } 
+            else if (languageRegex.test(req.params.query)) {
+                const language = req.params.query.split(languageRegex)
+                const original = language[0]
+                const target = language[1]
+                const languageResult = await Translate.paginate( { $or :[
+                    //search by name or
+                    { $and: [{'originalLanguage.name': { $regex: original, $options:"$i" }},
+                    {'targetLanguage.name': { $regex: target, $options:"$i" }}]
+                    },   
+
+                    //search by code or
+                    { $and: [{'originalLanguage.code': { $regex: original, $options:"$i" }},
+                    {'targetLanguage.code': { $regex: target, $options:"$i" }}]
+                    },
+
+                    //seary by native name
+                    { $and: [{'originalLanguage.nativeName': { $regex: original, $options:"$i" }},
+                    {'targetLanguage.nativeName': { $regex: target, $options:"$i" }}]
+                    }
+                ]
+                   
+                })
+
+                res.send(languageResult)
+
             } else {
                 const result = await Translate.paginate({'$or':[{title:new RegExp(req.params.query,'i')},{body:new RegExp(req.params.query,'i')}]}, options)
                 res.send(result)

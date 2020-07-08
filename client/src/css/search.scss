@@ -11,6 +11,20 @@ $font-01: "Raleway", sans-serif;
     width: 100%;
 
   }
+
+.normal-search{
+  color: gray;
+} 
+
+.tag-search{
+  color: rgb(172, 112, 122);
+  background-color: #cdc2c759 !important;
+}
+
+.language-search{
+  color: rgb(172, 112, 122);
+  background-color: #50505017 !important;
+}
   
   input#search-bar::placeholder{
     color: #967a86;
@@ -73,6 +87,24 @@ $font-01: "Raleway", sans-serif;
       max-width: 200px;
       overflow: hidden;
       color: #575757;
+  }
+
+  .query-title{
+    color: #cda8a8;
+  }
+
+  .tag-query{
+    background-color: #cda8a8;
+    border-radius: 4px;
+    padding: 2px 3px; 
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.904);
+    
+  }
+
+  .language-query{
+    color: #cda8a8;
+    font-size: 15px;
   }
 
   .total-docs {

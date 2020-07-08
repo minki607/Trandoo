@@ -95,7 +95,7 @@ const StatusBar = () => {
                             <img src="https://source.unsplash.com/40x40/?nathan" alt="user" className="user-img" />
                             <div className="text"> 
                             <h4 className="name">  post 3</h4>
-                            <h4> $2500.00 </h4>
+                            <h4> 321321 </h4>
                             </div>
                             <h4 className="status"> post 3 </h4>
                         </li>
@@ -103,7 +103,7 @@ const StatusBar = () => {
                             <img src="https://source.unsplash.com/40x40/?andrea" alt="user" className="user-img" />
                             <div className="text"> 
                             <h4 className="name">  post 4 </h4>
-                            <h4> $8500.00 </h4>
+                            <h4>312321</h4>
                             </div>
                             <h4 className="status"> post4 </h4>
                         </li>

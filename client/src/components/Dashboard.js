@@ -70,14 +70,56 @@ const useStyles = makeStyles(theme => ({
     
   }));
 
+ 
+
+const checkQuery = (searchValue) => {
+  if (searchValue) {
+    if (searchValue.match(/\[(.*?)\]/)){
+      return 'tag-search'
+    } else if (/\s*->\s*/.test(searchValue)) {
+      return 'language-search'
+    } else {
+      return 'normal-search'
+    }
+  } 
+}
+
+const renderMessage = (query) => {
+  switch (checkQuery(query)) {
+    case 'normal-search':
+        return(
+          <h2 className='message'>No results found for query {" "} 
+            <span className='query-title'>'{query}'</span>
+          </h2>
+        )
+    case 'tag-search':
+      return(
+        <h2 className='message'>No results found for tag {" "}  
+          <span className='tag-query'>{query.match(/\[(.*?)\]/)[1]}</span>
+        </h2>
+      )
+    case 'language-search':
+      var arrowRegex = /\s*->\s*/
+      const language = query.split(arrowRegex)
+      return(
+        <h2 className='message'>No results found for language {" "}  
+          <div className='language-query'>{language[0]} <img style= {{width:'10px'}} src='/images/language_change.png' alt='change_icon'/> {language[1]}</div>
+        </h2>
+      )
+
+      }
+
+}
+
 //for search tab
-const SearchInput = ({input}) => {
+const SearchInput = ({input, label} ) => {
+  //label = searchvalue
     return (
-      <input {...input} id="search-bar" placeholder="Search..."/>
+      <input className={checkQuery(label)} {...input} id="search-bar" placeholder="Search..."/>
     )
   }
-
   
+
 
 let Dashboard = ({auth, trans, searchValue, submitSearch}) => {
 
@@ -86,7 +128,7 @@ let Dashboard = ({auth, trans, searchValue, submitSearch}) => {
     const [value, setValue] = useState(0); //for indexing tabs
     const [hasPref, setPref] = useState(false) //indicate whether user has set up preference
     const [submitted, isSubmitted] = useState(false) //to check whether form has been submitted initially
-    const [query, setQuery] = useState(null) //query word to display in not-found message
+    const [query, setQuery] = useState('') //query word to display in not-found message
         
 
    
@@ -106,8 +148,7 @@ let Dashboard = ({auth, trans, searchValue, submitSearch}) => {
     const handleChange = ( event, newValue) => {
         setValue(newValue)
         //scroll to end position of div prior to appbar (i.e starting point of sticky appbar)
-        window.scrollTo({ left: 0, top: tabRef.current.offsetTop + tabRef.current.offsetHeight, behavior: 'smooth'}) 
-        
+        window.scrollTo({ left: 0, top: tabRef.current.offsetTop + tabRef.current.offsetHeight, behavior: 'smooth'})  
       };
 
   
@@ -115,9 +156,12 @@ let Dashboard = ({auth, trans, searchValue, submitSearch}) => {
     //search form handle   
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        submitSearch(searchValue)
-        setQuery(searchValue)
-        isSubmitted(true)
+        if (searchValue) {
+          submitSearch(searchValue)
+          setQuery(searchValue)
+          isSubmitted(true)
+        }
+        
      } 
 
      //rendering search results
@@ -142,25 +186,20 @@ let Dashboard = ({auth, trans, searchValue, submitSearch}) => {
     //fetching paginated data
     const handlePage = (page) => {
       submitSearch(searchValue, page)
-  
     };
     
     //to display when no matching result found 
     const NotFound = () => {
         return (
           <div className='no-result setPref-container'>
-          <div className='error-txt'>
-                    <h2 className='message'>No results found for query <span style={{color: '#cda8a8'}}>'{query}'</span></h2>
+                <div className='error-txt'>
+                    {renderMessage(query)}
                     <p className='message-2'>Try again with '{searchValue}'</p>
                 </div>
             <img className='error-img' src='../images/not_found.png' alt='not_found'/> 
           </div>
-        
         )
       }
-
-    
-
 
       return (
             <Fragment>
@@ -186,7 +225,7 @@ let Dashboard = ({auth, trans, searchValue, submitSearch}) => {
                                 className={`${classes.tab1} tab1`}
                                 icon={
                                 <form style={{display:'flex'}} onSubmit={(e)=> handleFormSubmit(e)} className="searchbox">
-                                    <Field component={SearchInput} type='text' name='search'/>
+                                    <Field component={SearchInput} label={searchValue} type='text' name='search' />
                                     <input src='/images/search-icon.png' 
                                         alt='search-icon' id='search-icon' type="image" style={{float:'right', border: 'none'}}>  
                                     </input>
@@ -227,10 +266,8 @@ let Dashboard = ({auth, trans, searchValue, submitSearch}) => {
                         </TabPanel>
 
                         <TabPanel value={value} index={3}>
-                            <AddedTodayList/> {/*<EmptyList message='There is no request posted today' btnTitle='Post a Request' link='/translate/new'/>*/}
-                        </TabPanel>
-
-                        
+                            <AddedTodayList/>
+                        </TabPanel>   
                         </div>
         
                     </div>

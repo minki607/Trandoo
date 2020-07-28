@@ -1,0 +1,60 @@
+.answer-detail hr {
+  margin: 10px;
+
+}
+.answer-detail { 
+  width: 80%;
+  height: 200px;
+  background: transparent;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 30px;
+}
+.answer-detail  textarea { 
+  margin-top : 20px;
+  padding: 10px;
+  box-sizing: border-box;
+  border: solid 1px rgba(0,0,0,0.2);
+}
+.answer-detail  .button-row { 
+  width: 100%;
+  display:flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.answers { 
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  border-top: solid 1px rgba(0,0,0,0.2);
+}
+
+.answers .response { 
+  width: 100%;
+  border-bottom: solid 1px rgba(0,0,0,0.2);
+  box-sizing: border-box;
+  padding:20px;
+  padding-bottom:5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.answers .item {
+  width: 100%;
+  display:flex;
+  font-size: 1rem;
+  font-weight:500;
+
+}
+.date-posted {
+  margin-left: auto;
+  align-self: flex-end;
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  font-size: 0.8rem;
+  font-weight: 400;
+}

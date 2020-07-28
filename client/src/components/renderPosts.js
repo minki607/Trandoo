@@ -62,41 +62,90 @@ const calcPosted = (postedDate) => {
     }
 }
 
-const renderPosts = (req) => {
-    return (
-        <div key={req._id} className='collection col s12'>  
-            <Link className='overlay' to = {`/translate/view/${req._id}`}></Link>  
-                    <div className='inner'>  
-                        <div className='card-content'>
-                            <span className='language'> 
-                                <span className='original'>{req.originalLanguage.code}</span> 
-                                <img style= {{width:'10px'}} src='/images/language_change.png' alt='change_icon'/> 
-                                <span className='target'>{req.targetLanguage.code}</span> 
-                            </span>   
-                            <div className='card-title'>{req.title}
-                             <div className='posted-date'>{calcPosted(req.dateSent)}</div>
-                            </div>
-                            
+const renderTags = (tags) => {
+  if (tags) {
+    return (<div>Has tags</div>)
+  }
+  else {
+    return (<div>Has no Tags</div>)
+  }
+}
 
-                           <span className='answer'><span className='answer-count'>0</span> <span className='answer-txt'>answer</span></span>
+//takes in requests and recommend flag initially set to false to determine 
+//whether post render is for normal section(see all, see today post) or recommended section 
+const renderPosts = (req, forRecommend = false) => {
+    if (forRecommend === false) {
+        return (
+            <div key={req._id} className='collection col s12'>  
+                <Link className='overlay' to = {`/translate/view/${req._id}`}></Link>  
+                        <div className='inner'>  
+                            <div className='card-content'>
+                                <span className='language'> 
+                                    <span className='original'>{req.originalLanguage.code}</span> 
+                                    <img style= {{width:'10px'}} src='/images/language_change.png' alt='change_icon'/> 
+                                    <span className='target'>{req.targetLanguage.code}</span> 
+                                </span>   
+                                <div className='card-title'>{req.title}
+                                <div className='posted-date'>{calcPosted(req.dateSent)}</div>
+                                </div>
+                            <span className='answer'><span className='answer-count'>{req.answers.length}</span> <span className='answer-txt'>answer</span></span>
+                            </div>
+                            {req.tags ? req.tags.map((tag, i) => {
+                                return (
+                                    <Link key={i} to={`translate/tag/${tag.name}`}>
+                                        <div className='tag-title'>{tag.name}
+                                            {tag.description ?  <span className='tag-desc'>{tag.description}</span> : null}
+                                        </div>
+                                    </Link>
+                                ) 
+                            }) : <div style={{height: '20px'}}></div>
+                      
+                            }
+                            <Tooltip title={`${calcDate(req.completeIn)} days remaing`} className='percentage'>
+                                <Line percent={calcPercent(calcDate(req.completeIn))} 
+                                strokeWidth="1" 
+                                strokeColor={ updateColor(req.completeIn) }/>
+                            </Tooltip>
                         </div>
-                        {req.tags.map((tag,i) => {
-                            return (
-                                <Link key={i} to={`translate/tag/${tag.name}`}>
-                                    <div className='tag-title'>{tag.name}
-                                        {tag.description ?  <span className='tag-desc'>{tag.description}</span> : null}
-                                    </div>
-                                </Link>
-                            ) 
-                        })
-                        }
-                        <Tooltip title={`${calcDate(req.completeIn)} days remaing`} className='percentage'>
-                            <Line percent={calcPercent(calcDate(req.completeIn))} 
-                            strokeWidth="1" 
-                            strokeColor={ updateColor(req.completeIn) }/>
-                        </Tooltip>
-                    </div>
-        </div>
-    )
+            </div>
+        )
+    } else if (forRecommend === true){
+        return (
+        <div key={req._id} className='col s12 m6 l4'>
+         <div className="recommend-post">
+            <div className="inner-content">
+                <div className="card-title" style={{maxWidth: 'none', paddingTop: '30px' }}>{req.title}</div>
+                <span className='language'> 
+                                    <span className='original-lang'>{req.originalLanguage.code}</span> 
+                                    <img style= {{width:'10px'}} src='/images/language_change.png' alt='change_icon'/> 
+                                    <span className='target-lang'>{req.targetLanguage.code}</span> 
+                                </span>  
+                <Tooltip title={`${calcDate(req.completeIn)} days remaing`} className='percentage'>
+                    <Line percent={calcPercent(calcDate(req.completeIn))} 
+                                strokeWidth="1" 
+                                strokeColor={ updateColor(req.completeIn) }/>
+                </Tooltip>                                   
+                <ul className="resources">
+                <div className='posted-date' style={{textAlign: 'right'}}>{calcPosted(req.dateSent)}</div>
+                    <li className="tags">
+
+                        {req.tags ? req.tags.map((tag, i) => {
+                                 return (
+                                  <Link key={i} to={`translate/tag/${tag.name}`}>
+                                      <div className='tag-title' style={{float:'none', marginTop: '10px'}}>{tag.name}
+                                      </div>
+                                  </Link>
+                                ) 
+                            }) : <div style={{marginTop: '10px'}}></div>
+                      
+                            }
+                    </li>
+                </ul>
+            </div>
+            </div>
+        </div>     
+            
+        )
+    }
 }
 export default renderPosts

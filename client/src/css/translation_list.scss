@@ -1,3 +1,5 @@
+$font-01: "Raleway", sans-serif;
+
 /*prevent firefox from making the font-weight bolder than it should be*/
 @-moz-document url-prefix() {
     body{
@@ -37,11 +39,12 @@ color: #505050ad;
 
 .collection {
     margin: 0 ;
-    font-family: 'Raleway', Helvetica, sans-serif !important;
+    font-family: $font-01 !important;
     letter-spacing: 0.09rem
 }
 
-.collection .overlay {
+
+.collection .overlay{
     position:absolute;
     left:0; top:0; bottom:0; right:0;
 }
@@ -55,6 +58,8 @@ color: #505050ad;
   .collection .inner a, .collection .inner .percentage{
     pointer-events: all;
   }
+
+
 
 .img-container {
     margin-top: 50px;
@@ -88,6 +93,7 @@ color: #505050ad;
 }
 
 .card-title {
+    min-height: 100px;
     max-width: 250px;
 }
 
@@ -106,20 +112,19 @@ color: #505050ad;
 }
 
 }
-
-.original {
+//for all post (general) need to make black to prevent overflow
+.original, .target {
     margin: 3px;
     @include ssm {
         display:block;
     }
 }
 
-.target{
+//for recommendation
+.original-lang, .target-lang{
     margin: 3px;
-    @include ssm {
-        display:block;
-    }
 }
+
 
 .answer {
     font-size: 10px;
@@ -144,7 +149,8 @@ color: #505050ad;
 
 
 .language {
-    font-size: 10px;
+    font-size: 15px;
+    color: #c58a94;
    
 }
 
@@ -174,6 +180,10 @@ color: #505050ad;
     display: block;
   }
 
+.tags {
+   padding-bottom: 20px;
+   min-height: 120px;
+}
 
 .collection h3 {
     padding: 15px;
@@ -279,4 +289,68 @@ color: #505050ad;
 {
     content: '.';
     visibility: hidden;
+}
+
+//for recommended section
+.language_set {
+    display: inline-block;
+    font-family: $font-01;
+    background-color: rgb(237, 236, 236);
+    max-width: 300px;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid rgba(163, 123, 129, 0.281);
+}
+
+.translatable {
+    padding: 10px;
+}
+
+.recommend-post {
+    font-family: $font-01;
+    border-radius:5px;
+    background-color: rgba(223, 211, 213, 0.171); 
+    margin-bottom: 15px;
+  
+}
+.inner-content{
+    margin: 15px;
+}
+
+//for recommendation filter carousel
+
+.fetch-list {
+    padding: 8px;
+    background-color: #e1dfe0;
+    color: gray;
+    border-radius: 3px;
+}
+.main-language {
+    
+    padding: 8px;
+    background-color: #cdc2c7;
+    color: white;
+
+}
+
+.translatable {
+    color: #424242
+}
+
+.slick-list {
+    margin: 0 auto;
+    background-color: #cdc2c7;
+    border: 1px solid #cdc2c7;
+    margin-bottom: 15px;
+}
+
+
+.main-arrow {
+border-style: solid;
+border-width: 5px 0 5px 9px;
+border-color: transparent transparent transparent #cdc2c7
+}
+
+.list-length {
+    color: #424242;
 }

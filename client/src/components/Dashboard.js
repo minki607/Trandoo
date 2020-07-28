@@ -21,7 +21,8 @@ import { usePagination } from "@material-ui/lab/Pagination";
 import renderPagination from './Pagination'
 import renderPosts from './renderPosts';
 import AddedTodayList from './AddedTodayList'
-
+import InfoAccordion from './InfoAccordion';
+import Recommended from './Recommended';
 
 
 //Tabs from https://material-ui.com/components/tabs/ 
@@ -121,6 +122,7 @@ const SearchInput = ({input, label} ) => {
   
 
 
+
 let Dashboard = ({auth, trans, searchValue, submitSearch}) => {
 
     const tabRef = useRef(null) //for referencing tab appbar
@@ -129,9 +131,7 @@ let Dashboard = ({auth, trans, searchValue, submitSearch}) => {
     const [hasPref, setPref] = useState(false) //indicate whether user has set up preference
     const [submitted, isSubmitted] = useState(false) //to check whether form has been submitted initially
     const [query, setQuery] = useState('') //query word to display in not-found message
-        
-
-   
+    const [connected, setConnected ] = useState(false)
 
     useEffect(() => {
         //if user has set up preference shown them recommended tab
@@ -240,7 +240,7 @@ let Dashboard = ({auth, trans, searchValue, submitSearch}) => {
                                
                         <TabPanel value={value} index={0}> 
                         <div>
-                        
+                        {!submitted || (trans.query.docs && !trans.query.docs.length) ? <InfoAccordion mode={checkQuery(query)} /> : null }      
                             {(trans.query.docs && !trans.query.docs.length && submitted && !trans.loading) 
                             ? NotFound(searchValue) 
                             : <div className='row'>
@@ -262,7 +262,7 @@ let Dashboard = ({auth, trans, searchValue, submitSearch}) => {
                             <TranslationList/>
                         </TabPanel>
                         <TabPanel value={value} index={2}>
-                            {hasPref ? 'Recommended List' : <EmptyList message='You have not set up your preference yet' btnTitle='Set up Now' link='/setPref' />}
+                            {hasPref ? <Recommended/> : <EmptyList message='You have not set up your preference yet' btnTitle='Set up Now' link='/setPref' />}
                         </TabPanel>
 
                         <TabPanel value={value} index={3}>

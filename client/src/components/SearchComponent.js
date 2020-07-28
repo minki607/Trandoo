@@ -47,7 +47,6 @@ let SearchComponent = ({trans, submitSearch, searchValue}) => {
 
 const handleChange = (page) => {
     submitSearch(searchValue, page)
-    console.log(trans)
   };
 
   const NotFound = () => {

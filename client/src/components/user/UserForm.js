@@ -51,7 +51,6 @@ class UserForm extends Component {
 }
 
 function validate(values) {
-    console.log()
     const errors = {}
     if (!values.displayName) {
         errors.displayName = 'Name is Required'

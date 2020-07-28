@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect} from 'react'
+import React, {useEffect} from 'react'
 import {connect} from 'react-redux'
 import {fetchTodayList} from '../actions'
 import LoadingSpinner from './LoadingSpinner'

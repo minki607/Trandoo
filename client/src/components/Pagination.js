@@ -2,10 +2,12 @@ import React from 'react'
 import IconButton from "@material-ui/core/IconButton";
 
 
-const renderPagination = (items) => {
+//for Recommend flag indicates whether pagination style is for recommendation section or not
+const renderPagination = (items, forRecommend = false) => {
+    console.log(forRecommend)
     return (
         <div>
-            <ul>
+            <ul style={ forRecommend ? { display:'flex'} : {}}>
                 {items.map(({ page, type, selected, ...item }, index) => {
                 let children = null;
 

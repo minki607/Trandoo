@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/minki607/google-auth#readme",
   "dependencies": {
+    "@material-ui/icons": "^4.9.1",
     "axios": "^0.19.2",
     "body-parser": "^1.19.0",
     "concurrently": "^5.1.0",
@@ -44,6 +45,7 @@
     "react-transition-group": "^4.4.1",
     "redux-form": "^8.3.1",
     "redux-thunk": "^2.3.0",
+    "socket.io": "^2.3.0",
     "stripe": "^8.36.0"
   }
 }

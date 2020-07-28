@@ -8,14 +8,15 @@ import renderPosts from './renderPosts'
 
 
 
-const TranslationList = ({trans ,fetchRequests}) => {
+const TranslationList = ({trans,fetchRequests}) => {
     
     useEffect(() => {
         fetchRequests()
     }, [])   
 
     const renderRequests = () => {
-        return trans.data.docs && trans.data.docs.map((req) => {
+        //optional chaining 
+        return  trans?.data?.docs?.map((req) => {
             return (
             renderPosts(req)
             )
@@ -37,10 +38,10 @@ const TranslationList = ({trans ,fetchRequests}) => {
             <div className='list-render'>
                 {trans.loading ? <LoadingSpinner/> : 
                 <div className='row'>
-                <div className={`col ${ trans.query.hasNextPage ? 's11' : 's12'}`}>
+                <div className={`col ${ trans.data.totalPages > 1 ? 's11' : 's12'}`}>
                   {renderRequests()}
                   </div>
-                {trans.data.hasNextPage ? 
+                {trans.data.totalPages > 1 ? 
                 <div className='col l1 s1'>
                   {renderPagination(items)}
                 </div> : null
